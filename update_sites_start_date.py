@@ -38,7 +38,7 @@ def find_site_start_year(site_id, start_year):
         logger.info(f'{site_id}/{year} {res.status_code}')
 
 
-def get_site_json_measure(site_id, startdate):
+def get_site_daily_report(site_id, startdate):
     delta_day = timedelta(days=1)
     enddate = startdate + delta_day
 
@@ -53,21 +53,25 @@ def get_site_json_measure(site_id, startdate):
     return  None
 
 
-def _update_site_json_measures_with_site_details(site_json_measures, site_dict):
-    for site_json_measure in site_json_measures:
-        site_json_measure.update(site_dict)
-    return site_json_measures
+def _update_site_daily_report(site_daily_report, site_dict):
+    for quarter_report in site_daily_report:
+        t = time.fromisoformat(quarter_report['Time Period Ending'])
+        d = datetime.fromisoformat(quarter_report['Report Date'])
+        d = d.replace(hour=t.hour, minute=t.minute)
+        site_dict['Report Date Time'] = d.isoformat()
+        quarter_report.update(site_dict)
+    return site_daily_report
 
 
-def store_site_json(site_json_measures, site_dict, date):
-    if not site_json_measures:
+def store_site_daily_report(site_json_daily_report, site_dict, date):
+    if not site_json_daily_report:
         return
     folder = os.path.join(base_site_data_folder,f'{site_dict["Id"]}/{date.year}/{date.month}/')
     os.makedirs(folder, exist_ok=True)
     file_name = f'{site_dict["Id"]}_{date.year}_{date.month}_{date.day}.json'
     with open(os.path.join(folder, file_name), mode='w') as f:
-        site_json_measures = _update_site_json_measures_with_site_details(site_json_measures['Rows'], site_dict)
-        for measure in site_json_measures:
+        site_json_daily_report = _update_site_daily_report(site_json_daily_report['Rows'], site_dict)
+        for measure in site_json_daily_report:
             json.dump(measure, f)
             f.write('\n')
 
@@ -76,22 +80,14 @@ def download_and_store_site_jsons(site_dict, startdate, enddate):
     delta_day = timedelta(days=1)
 
     while startdate < enddate:
-        site_json_measure = get_site_json_measure(site_dict['Id'], startdate)
-        store_site_json(site_json_measure, site_dict, startdate)
+        site_json_daily_report = get_site_daily_report(site_dict['Id'], startdate)
+        # site_json_daily_report = _transform_site_daily_report(site_json_daily_report)
+        store_site_daily_report(site_json_daily_report, site_dict, startdate)
         startdate = startdate + delta_day
     logger.info('finished')
 
 
-def _transform_site_measurements(site_json_measures):
-    for measure in site_json_measures:
-        measurement_time = time.fromisoformat(measure['Time Period Ending'])
-        measurement_date = datetime.fromisoformat(measure['Report Date'])
-        measurement_date.replace(hour=measurement_time.hour, minute=measurement_time.minute)
-        measure['Report Date Time'] = measurement_date
-    return site_json_measures
-
-
-def download_sites_jsons(file_name, startdate, enddate):
+def download_sites_daily_reports(file_name, startdate, enddate):
     '''
     Loads sites.json and for each site id downloads all json starting from year, month and day
     :param file_name:
@@ -103,7 +99,7 @@ def download_sites_jsons(file_name, startdate, enddate):
         download_and_store_site_jsons(site_dict, startdate, enddate)
 
 
-def download_site_jsons(file_name, site_id, startdate, enddate):
+def download_site_daily_reports(file_name, site_id, startdate, enddate):
     sites_json = load_sites_info(file_name)
     logger.info(f'sites {sites_json["row_count"]}')
     for site_dict in sites_json['sites']:
@@ -124,6 +120,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if not args.site:
-        download_sites_jsons(args.sites_file, args.startdate, args.enddate)
+        download_sites_daily_reports(args.sites_file, args.startdate, args.enddate)
         exit(0)
-    download_site_jsons(args.sites_file, args.site, args.startdate, args.enddate)
+    download_site_daily_reports(args.sites_file, args.site, args.startdate, args.enddate)
