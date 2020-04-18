@@ -1,7 +1,7 @@
 import json
 import requests
 import argparse
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, time
 import os
 
 from common import get_logger, valid_date
@@ -68,8 +68,8 @@ def store_site_json(site_json_measures, site_dict, date):
     with open(os.path.join(folder, file_name), mode='w') as f:
         site_json_measures = _update_site_json_measures_with_site_details(site_json_measures['Rows'], site_dict)
         for measure in site_json_measures:
-            f.write(json.dumps(measure))
-            f.write(str('\n'))
+            json.dump(measure, f)
+            f.write('\n')
 
 
 def download_and_store_site_jsons(site_dict, startdate, enddate):
@@ -80,6 +80,15 @@ def download_and_store_site_jsons(site_dict, startdate, enddate):
         store_site_json(site_json_measure, site_dict, startdate)
         startdate = startdate + delta_day
     logger.info('finished')
+
+
+def _transform_site_measurements(site_json_measures):
+    for measure in site_json_measures:
+        measurement_time = time.fromisoformat(measure['Time Period Ending'])
+        measurement_date = datetime.fromisoformat(measure['Report Date'])
+        measurement_date.replace(hour=measurement_time.hour, minute=measurement_time.minute)
+        measure['Report Date Time'] = measurement_date
+    return site_json_measures
 
 
 def download_sites_jsons(file_name, startdate, enddate):
