@@ -68,7 +68,7 @@ def store_site_json(site_json_measures, site_dict, date):
     with open(os.path.join(folder, file_name), mode='w') as f:
         site_json_measures = _update_site_json_measures_with_site_details(site_json_measures['Rows'], site_dict)
         for measure in site_json_measures:
-            f.write(str(measure))
+            f.write(json.dumps(measure))
             f.write(str('\n'))
 
 
