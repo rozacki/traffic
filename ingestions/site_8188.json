@@ -1,0 +1,103 @@
+{
+  "type": "index_parallel",
+  "ioConfig": {
+    "type": "index_parallel",
+    "inputSource": {
+      "type": "local",
+      "filter": "*.json",
+      "baseDir": "/root/traffic/data/sites/8188/2016/1"
+    },
+    "inputFormat": {
+      "type": "json"
+    }
+  },
+  "tuningConfig": {
+    "type": "index_parallel",
+    "partitionsSpec": {
+      "type": "dynamic"
+    }
+  },
+  "dataSchema": {
+    "dataSource": "site_8188",
+    "granularitySpec": {
+      "type": "uniform",
+      "queryGranularity": "HOUR",
+      "rollup": true,
+      "segmentGranularity": "DAY"
+    },
+    "timestampSpec": {
+      "column": "Report Date Time",
+      "format": "iso"
+    },
+    "dimensionsSpec": {
+      "dimensions": [
+        "0 - 10 mph",
+        "11 - 15 mph",
+        "16 - 20 mph",
+        "21 - 25 mph",
+        "26 - 30 mph",
+        "31 - 35 mph",
+        "36 - 40 mph",
+        "41 - 45 mph",
+        "46 - 50 mph",
+        "51 - 55 mph",
+        "56 - 60 mph",
+        "61 - 70 mph",
+        "71 - 80 mph",
+        "80+ mph",
+        "Description",
+        "Name",
+        "Report Date",
+        "Site Name",
+        "Status",
+        "Time Period Ending"
+      ]
+    },
+    "metricsSpec": [
+      {
+        "name": "count",
+        "type": "count"
+      },
+      {
+        "name": "sum_0 - 520 cm",
+        "type": "longSum",
+        "fieldName": "0 - 520 cm"
+      },
+      {
+        "name": "sum_521 - 660 cm",
+        "type": "longSum",
+        "fieldName": "521 - 660 cm"
+      },
+      {
+        "name": "sum_661 - 1160 cm",
+        "type": "longSum",
+        "fieldName": "661 - 1160 cm"
+      },
+      {
+        "name": "sum_1160+ cm",
+        "type": "longSum",
+        "fieldName": "1160+ cm"
+      },
+      {
+        "name": "sum_Avg mph",
+        "type": "longSum",
+        "fieldName": "Avg mph"
+      },
+      {
+        "name": "sum_Id",
+        "type": "longSum",
+        "fieldName": "Id"
+      },
+      {
+        "name": "sum_Time Interval",
+        "type": "longSum",
+        "fieldName": "Time Interval"
+      },
+      {
+        "name": "sum_Total Volume",
+        "type": "longSum",
+        "fieldName": "Total Volume"
+      }
+    ]
+  }
+}
