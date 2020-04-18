@@ -67,7 +67,9 @@ def store_site_json(site_json_measures, site_dict, date):
     file_name = f'{site_dict["Id"]}_{date.year}_{date.month}_{date.day}.json'
     with open(os.path.join(folder, file_name), mode='w') as f:
         site_json_measures = _update_site_json_measures_with_site_details(site_json_measures['Rows'], site_dict)
-        f.write(str(site_json_measures))
+        for measure in site_json_measures:
+            f.write(str(measure))
+            f.write(str('\n'))
 
 
 def download_and_store_site_jsons(site_dict, startdate, enddate):
