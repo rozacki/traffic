@@ -81,13 +81,12 @@ def download_and_store_site_jsons(site_dict, startdate, enddate):
 
     while startdate < enddate:
         site_json_daily_report = get_site_daily_report(site_dict['Id'], startdate)
-        # site_json_daily_report = _transform_site_daily_report(site_json_daily_report)
         store_site_daily_report(site_json_daily_report, site_dict, startdate)
         startdate = startdate + delta_day
-    logger.info('finished')
+    logger.info(f'finished loading site {site_dict["Id"]}')
 
 
-def download_sites_daily_reports(file_name, startdate, enddate):
+def download_sites_daily_reports(file_name, startdate, enddate, sites_count):
     '''
     Loads sites.json and for each site id downloads all json starting from year, month and day
     :param file_name:
@@ -95,7 +94,11 @@ def download_sites_daily_reports(file_name, startdate, enddate):
     '''
     sites_json = load_sites_info(file_name)
     logger.info(f'sites {sites_json["row_count"]}')
+    sites_downloaded = 0
     for site_dict in sites_json['sites']:
+        if sites_downloaded >= sites_count:
+            break
+        sites_downloaded = sites_downloaded + 1
         download_and_store_site_jsons(site_dict, startdate, enddate)
 
 
@@ -113,6 +116,7 @@ def download_site_daily_reports(file_name, site_id, startdate, enddate):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--site', type=int, default=None)
+    parser.add_argument('--sites-count', type=int, default=200, help='How many sites download')
     parser.add_argument('--sites-file', type=str, default='sites.json')
     parser.add_argument('-s', '--startdate', help="The Start Date - format YYYY-MM-DD", type=valid_date)
     parser.add_argument('-e', '--enddate', help="The Stop Date - format YYYY-MM-DD", type=valid_date,
@@ -120,6 +124,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if not args.site:
-        download_sites_daily_reports(args.sites_file, args.startdate, args.enddate)
+        # loads data for all sites in sites_file
+        download_sites_daily_reports(args.sites_file, args.startdate, args.enddate, args.sites_count)
         exit(0)
+    # loads data for single site
     download_site_daily_reports(args.sites_file, args.site, args.startdate, args.enddate)
