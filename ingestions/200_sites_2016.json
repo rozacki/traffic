@@ -1,9 +1,9 @@
 {
   "type": "index_parallel",
-  "id": "index_parallel_200_sites_2016_oihelafl_2020-04-20T12:55:05.217Z",
-  "groupId": "index_parallel_200_sites_2016_oihelafl_2020-04-20T12:55:05.217Z",
+  "id": "index_parallel_200_sites_2016_coplophb_2020-04-20T16:24:26.761Z",
+  "groupId": "index_parallel_200_sites_2016_coplophb_2020-04-20T16:24:26.761Z",
   "resource": {
-    "availabilityGroup": "index_parallel_200_sites_2016_oihelafl_2020-04-20T12:55:05.217Z",
+    "availabilityGroup": "index_parallel_200_sites_2016_coplophb_2020-04-20T16:24:26.761Z",
     "requiredCapacity": 1
   },
   "spec": {
@@ -15,208 +15,17 @@
         "missingValue": null
       },
       "dimensionsSpec": {
-        "dimensions": [
-          {
-            "type": "string",
-            "name": "0 - 10 mph",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "11 - 15 mph",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "16 - 20 mph",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "21 - 25 mph",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "26 - 30 mph",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "31 - 35 mph",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "36 - 40 mph",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "41 - 45 mph",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "46 - 50 mph",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "51 - 55 mph",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "56 - 60 mph",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "61 - 70 mph",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "71 - 80 mph",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "80+ mph",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "Description",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "Name",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "Report Date",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "Site Name",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "Status",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          },
-          {
-            "type": "string",
-            "name": "Time Period Ending",
-            "multiValueHandling": "SORTED_ARRAY",
-            "createBitmapIndex": true
-          }
-        ],
+        "dimensions": [],
         "dimensionExclusions": [
-          "Time Interval",
-          "521 - 660 cm",
-          "count",
-          "Total Volume",
-          "sum_1160+ cm",
-          "0 - 520 cm",
-          "sum_Id",
-          "sum_Avg mph",
-          "Report Date Time",
-          "1160+ cm",
-          "sum_521 - 660 cm",
-          "sum_Total Volume",
-          "sum_0 - 520 cm",
-          "sum_Time Interval",
-          "661 - 1160 cm",
-          "sum_661 - 1160 cm",
-          "Avg mph",
-          "Id"
+          "Report Date Time"
         ]
       },
-      "metricsSpec": [
-        {
-          "type": "count",
-          "name": "count"
-        },
-        {
-          "type": "longSum",
-          "name": "sum_0 - 520 cm",
-          "fieldName": "0 - 520 cm",
-          "expression": null
-        },
-        {
-          "type": "longSum",
-          "name": "sum_521 - 660 cm",
-          "fieldName": "521 - 660 cm",
-          "expression": null
-        },
-        {
-          "type": "longSum",
-          "name": "sum_661 - 1160 cm",
-          "fieldName": "661 - 1160 cm",
-          "expression": null
-        },
-        {
-          "type": "longSum",
-          "name": "sum_1160+ cm",
-          "fieldName": "1160+ cm",
-          "expression": null
-        },
-        {
-          "type": "longSum",
-          "name": "sum_Avg mph",
-          "fieldName": "Avg mph",
-          "expression": null
-        },
-        {
-          "type": "longSum",
-          "name": "sum_Id",
-          "fieldName": "Id",
-          "expression": null
-        },
-        {
-          "type": "longSum",
-          "name": "sum_Time Interval",
-          "fieldName": "Time Interval",
-          "expression": null
-        },
-        {
-          "type": "longSum",
-          "name": "sum_Total Volume",
-          "fieldName": "Total Volume",
-          "expression": null
-        }
-      ],
+      "metricsSpec": [],
       "granularitySpec": {
         "type": "uniform",
         "segmentGranularity": "DAY",
-        "queryGranularity": "HOUR",
-        "rollup": true,
+        "queryGranularity": "MINUTE",
+        "rollup": false,
         "intervals": null
       },
       "transformSpec": {
@@ -228,7 +37,7 @@
       "type": "index_parallel",
       "inputSource": {
         "type": "local",
-        "baseDir": "/root/traffic/data/sites",
+        "baseDir": "/root/traffic/data",
         "filter": "*.json"
       },
       "inputFormat": {

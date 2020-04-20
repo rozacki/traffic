@@ -1,0 +1,36 @@
+{
+  "type": "index_parallel",
+  "ioConfig": {
+    "type": "index_parallel",
+    "inputSource": {
+      "type": "local",
+      "filter": "*.json",
+      "baseDir": "/root/traffic/data"
+    },
+    "inputFormat": {
+      "type": "json"
+    }
+  },
+  "tuningConfig": {
+    "type": "index_parallel",
+    "partitionsSpec": {
+      "type": "dynamic"
+    }
+  },
+  "dataSchema": {
+    "dataSource": "200_sites_2016",
+    "granularitySpec": {
+      "type": "uniform",
+      "queryGranularity": "MINUTE",
+      "rollup": false,
+      "segmentGranularity": "DAY"
+    },
+    "timestampSpec": {
+      "column": "Report Date Time",
+      "format": "iso"
+    },
+    "dimensionsSpec": {
+      "dimensions": []
+    }
+  }
+}

@@ -1,0 +1,339 @@
+{ "type": "FeatureCollection", "features": [ 
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.165802, -1.8846955] }, "properties": { "Avg Spd": "74", "site name":"7001/1" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.027737, 1.1247127] }, "properties": { "Avg Spd": "69", "site name":"A14/1908A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.992764, 1.3165414] }, "properties": { "Avg Spd": "53", "site name":"A14/2060J" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.511944, -0.2957096] }, "properties": { "Avg Spd": "67", "site name":"A1M/2228B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.535156, -0.32027546] }, "properties": { "Avg Spd": "63", "site name":"A1M/2259B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.79636, -0.2260585] }, "properties": { "Avg Spd": "66", "site name":"A1M/9362B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.692055, -1.2734878] }, "properties": { "Avg Spd": "65", "site name":"A1M/9379B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.718536, -1.2893542] }, "properties": { "Avg Spd": "75", "site name":"A1M/9411B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.886375, -0.2061842] }, "properties": { "Avg Spd": "35", "site name":"A1M/9468J" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.887466, -0.20640232] }, "properties": { "Avg Spd": "72", "site name":"A1M/9470A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 54.88027, -1.5607861] }, "properties": { "Avg Spd": "64", "site name":"A1M/9513A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.815487, -1.3418928] }, "properties": { "Avg Spd": "64", "site name":"A1M/9541A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.990173, -1.3631057] }, "properties": { "Avg Spd": "59", "site name":"A1M/9763B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 54.01387, -1.3798202] }, "properties": { "Avg Spd": "64", "site name":"A1M/9790A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 54.081917, -1.3988309] }, "properties": { "Avg Spd": "0", "site name":"A1M/9869K" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 54.0966, -1.4097809] }, "properties": { "Avg Spd": "66", "site name":"A1M/9887A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 54.10502, -1.4147695] }, "properties": { "Avg Spd": "65", "site name":"A1M/9897A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 54.12726, -1.4153135] }, "properties": { "Avg Spd": "72", "site name":"A1M/9922B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.41796, 0.3530375] }, "properties": { "Avg Spd": "61", "site name":"A2/8369J" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.408466, 0.3813813] }, "properties": { "Avg Spd": "48", "site name":"A2/8392M" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.40593, 0.3942626] }, "properties": { "Avg Spd": "68", "site name":"A2/8402A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.401077, 0.42066574] }, "properties": { "Avg Spd": "67", "site name":"A2/8420A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.09323, -1.347848] }, "properties": { "Avg Spd": "64", "site name":"A38/4696A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.785324, -0.41073665] }, "properties": { "Avg Spd": "70", "site name":"M1/2413B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.86238, -0.4332477] }, "properties": { "Avg Spd": "69", "site name":"M1/2501A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.945786, -0.5014038] }, "properties": { "Avg Spd": "35", "site name":"M1/2607J" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.95696, -0.51506114] }, "properties": { "Avg Spd": "71", "site name":"M1/2623B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.022808, -0.5886718] }, "properties": { "Avg Spd": "57", "site name":"M1/2717J" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.04418, -0.65950745] }, "properties": { "Avg Spd": "None", "site name":"M1/2771A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.079433, -0.74169004] }, "properties": { "Avg Spd": "70", "site name":"M1/2840B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.13521, -0.8292207] }, "properties": { "Avg Spd": "None", "site name":"M1/2926A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.153923, -0.84706] }, "properties": { "Avg Spd": "71", "site name":"M1/2949A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.611057, -1.1996787] }, "properties": { "Avg Spd": "51", "site name":"M1/3563B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.71403, -1.2894558] }, "properties": { "Avg Spd": "71", "site name":"M1/3702B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.724796, -1.2822921] }, "properties": { "Avg Spd": "68", "site name":"M1/3714B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.921837, -1.3002087] }, "properties": { "Avg Spd": "73", "site name":"M1/3942A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.927692, -1.3002335] }, "properties": { "Avg Spd": "65", "site name":"M1/3949L" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.939594, -1.2854446] }, "properties": { "Avg Spd": "76", "site name":"M1/3966A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.979412, -1.249686] }, "properties": { "Avg Spd": "67", "site name":"M1/4017B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.99369, -1.2319033] }, "properties": { "Avg Spd": "65", "site name":"M1/4037B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.00747, -1.2355931] }, "properties": { "Avg Spd": "66", "site name":"M1/4053B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.016846, -1.2438946] }, "properties": { "Avg Spd": "70", "site name":"M1/4065B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.03107, -1.2477912] }, "properties": { "Avg Spd": "69", "site name":"M1/4081B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.034527, -1.2494758] }, "properties": { "Avg Spd": "68", "site name":"M1/4085B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.08959, -1.3049301] }, "properties": { "Avg Spd": "53", "site name":"M1/4158A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.3837, -1.2779925] }, "properties": { "Avg Spd": "62", "site name":"M1/4503B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.60095, -1.5500478] }, "properties": { "Avg Spd": "50", "site name":"M1/4841J" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.605537, -1.5521148] }, "properties": { "Avg Spd": "72", "site name":"M1/4846A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.605625, -1.5514791] }, "properties": { "Avg Spd": "47", "site name":"M1/4846L" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.60804, -1.5522395] }, "properties": { "Avg Spd": "67", "site name":"M1/4849B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.64264, -1.534342] }, "properties": { "Avg Spd": "None", "site name":"M1/4890A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.732193, -1.5201969] }, "properties": { "Avg Spd": "58", "site name":"M1/5008L" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.74431, -1.5156317] }, "properties": { "Avg Spd": "67", "site name":"M1/5022B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.77706, -1.465088] }, "properties": { "Avg Spd": "67", "site name":"M1/5079A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.788994, -1.4271877] }, "properties": { "Avg Spd": "None", "site name":"M1/5115M" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.806076, -1.3754168] }, "properties": { "Avg Spd": "70", "site name":"M1/5157B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.80633, -1.3657552] }, "properties": { "Avg Spd": "55", "site name":"M1/5163J" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.77313, 0.16094783] }, "properties": { "Avg Spd": "None", "site name":"M11/6349A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.229435, 0.07199789] }, "properties": { "Avg Spd": "62", "site name":"M11/6904A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.47583, -1.1563636] }, "properties": { "Avg Spd": "74", "site name":"M18/7641A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.333584, 0.5115193] }, "properties": { "Avg Spd": "65", "site name":"M2/8528A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.329144, 0.51635844] }, "properties": { "Avg Spd": "None", "site name":"M2/8534A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.300007, 0.8905548] }, "properties": { "Avg Spd": "29", "site name":"M2/8818M" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.30803, 0.4273011] }, "properties": { "Avg Spd": "None", "site name":"M20/6502L" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.29906, 0.51636153] }, "properties": { "Avg Spd": "None", "site name":"M20/6568A1" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.298954, 0.5167] }, "properties": { "Avg Spd": "None", "site name":"M20/6568B1" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.42691, 0.23859702] }, "properties": { "Avg Spd": "57", "site name":"M25/4087B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.4242, 0.23752932] }, "properties": { "Avg Spd": "49", "site name":"M25/4090K" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.417572, 0.22710873] }, "properties": { "Avg Spd": "65", "site name":"M25/4101L" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.406822, 0.21240813] }, "properties": { "Avg Spd": "65", "site name":"M25/4116A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.273243, 0.06381558] }, "properties": { "Avg Spd": "72", "site name":"M25/4322B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.267536, 0.0135721695] }, "properties": { "Avg Spd": "65", "site name":"M25/4358A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.26528, -0.026276149] }, "properties": { "Avg Spd": "67", "site name":"M25/4387A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.258247, -0.053937864] }, "properties": { "Avg Spd": "65", "site name":"M25/4409B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.25933, -0.10809785] }, "properties": { "Avg Spd": "66", "site name":"M25/4447B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.263752, -0.13189746] }, "properties": { "Avg Spd": "51", "site name":"M25/4463K" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.264317, -0.13230464] }, "properties": { "Avg Spd": "63", "site name":"M25/4465A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.26863, -0.16674973] }, "properties": { "Avg Spd": "70", "site name":"M25/4490B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.263992, -0.24033791] }, "properties": { "Avg Spd": "None", "site name":"M25/4546A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.30629, -0.3951598] }, "properties": { "Avg Spd": "71", "site name":"M25/4681A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.315685, -0.43549877] }, "properties": { "Avg Spd": "68", "site name":"M25/4712J" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.396324, -0.5352161] }, "properties": { "Avg Spd": "56", "site name":"M25/4832J" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.43375, -0.53879577] }, "properties": { "Avg Spd": "68", "site name":"M25/4876A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.465324, -0.5112837] }, "properties": { "Avg Spd": "68", "site name":"M25/4916A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.467632, -0.50890505] }, "properties": { "Avg Spd": "69", "site name":"M25/4919A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.551075, -0.52412057] }, "properties": { "Avg Spd": "68", "site name":"M25/5015A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.664772, -0.49369228] }, "properties": { "Avg Spd": "71", "site name":"M25/5135B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.67956, -0.45385906] }, "properties": { "Avg Spd": "81", "site name":"M25/5165M" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.71588, -0.3739416] }, "properties": { "Avg Spd": "66", "site name":"M25/5235K" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.711903, -0.3175187] }, "properties": { "Avg Spd": "67", "site name":"M25/5271A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.715874, -0.28130916] }, "properties": { "Avg Spd": "51", "site name":"M25/5295J" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.70562, -0.25298384] }, "properties": { "Avg Spd": "63", "site name":"M25/5316B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.575615, 0.28316158] }, "properties": { "Avg Spd": "61", "site name":"M25/5764B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.52293, 0.27412465] }, "properties": { "Avg Spd": "None", "site name":"M25/5825A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 50.959904, -1.4251006] }, "properties": { "Avg Spd": "60", "site name":"M27/9148A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 50.959545, -1.4089013] }, "properties": { "Avg Spd": "None", "site name":"M27/9160J" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 50.89743, -1.311486] }, "properties": { "Avg Spd": "67", "site name":"M27/9273A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 50.862602, -1.16685] }, "properties": { "Avg Spd": "70", "site name":"M27/9387A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.06005, -1.2935222] }, "properties": { "Avg Spd": "66", "site name":"M3/2039B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 50.96805, -1.3801967] }, "properties": { "Avg Spd": "68", "site name":"M3/2161B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 50.964954, -1.3835559] }, "properties": { "Avg Spd": "58", "site name":"M3/2165M" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 50.960358, -1.3923737] }, "properties": { "Avg Spd": "None", "site name":"M3/2173A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.489845, -0.36982664] }, "properties": { "Avg Spd": "60", "site name":"M4/2188B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.49301, -0.52037954] }, "properties": { "Avg Spd": "None", "site name":"M4/2295A2" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.49331, -0.53043926] }, "properties": { "Avg Spd": "71", "site name":"M4/2302B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.50217, -0.6120931] }, "properties": { "Avg Spd": "70", "site name":"M4/2368A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.467247, -0.77511597] }, "properties": { "Avg Spd": "71", "site name":"M4/2502A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.412857, -0.9549852] }, "properties": { "Avg Spd": "73", "site name":"M4/2646A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.431923, -1.0500109] }, "properties": { "Avg Spd": "67", "site name":"M4/2718B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.45103, -1.3967296] }, "properties": { "Avg Spd": "70", "site name":"M4/2979B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.519077, -1.6606328] }, "properties": { "Avg Spd": "76", "site name":"M4/3188A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.540337, -1.8040897] }, "properties": { "Avg Spd": "74", "site name":"M4/3293A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.540363, -1.808372] }, "properties": { "Avg Spd": "68", "site name":"M4/3296B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.54642, -1.8570468] }, "properties": { "Avg Spd": "69", "site name":"M4/3331B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.547024, -1.8581265] }, "properties": { "Avg Spd": "57", "site name":"M4/3332L" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.557423, -1.8948191] }, "properties": { "Avg Spd": "72", "site name":"M4/3360B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.537712, -1.9912071] }, "properties": { "Avg Spd": "73", "site name":"M4/3434A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.520645, -2.049237] }, "properties": { "Avg Spd": "72", "site name":"M4/3479A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.51431, -2.0879235] }, "properties": { "Avg Spd": "68", "site name":"M4/3507A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.511612, -2.1486273] }, "properties": { "Avg Spd": "67", "site name":"M4/3549A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.51795, -2.2748675] }, "properties": { "Avg Spd": "71", "site name":"M4/3638B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.50164, -2.3428998] }, "properties": { "Avg Spd": "73", "site name":"M4/3689A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.552788, -2.5534165] }, "properties": { "Avg Spd": "65", "site name":"M4/3869B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.611782, -0.7731341] }, "properties": { "Avg Spd": "51", "site name":"M40/8509L" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.739277, -1.0946466] }, "properties": { "Avg Spd": "74", "site name":"M40/8789A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.947056, -1.2048583] }, "properties": { "Avg Spd": "38", "site name":"M40/9061K" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.355717, -1.9841491] }, "properties": { "Avg Spd": "67", "site name":"M42/6168A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.348072, -1.8306403] }, "properties": { "Avg Spd": "None", "site name":"M42/6277A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.34727, -1.8135852] }, "properties": { "Avg Spd": "60", "site name":"M42/6289B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.43834, -1.7138495] }, "properties": { "Avg Spd": "59", "site name":"M42/6416M" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.497242, -1.7167523] }, "properties": { "Avg Spd": "62", "site name":"M42/6482L" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.515186, -1.7254343] }, "properties": { "Avg Spd": "70", "site name":"M42/6504B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.54245, -1.7229787] }, "properties": { "Avg Spd": "None", "site name":"M42/6536B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.60402, -1.6408614] }, "properties": { "Avg Spd": "None", "site name":"M42/6626A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.51146, -1.9754466] }, "properties": { "Avg Spd": "65", "site name":"M5/7050A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.45163, -2.0136347] }, "properties": { "Avg Spd": "44", "site name":"M5/7138M" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.370075, -2.0572298] }, "properties": { "Avg Spd": "65", "site name":"M5/7242B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.17565, -2.1751382] }, "properties": { "Avg Spd": "None", "site name":"M5/7482B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.799435, -2.2865412] }, "properties": { "Avg Spd": "None", "site name":"M5/7970B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.78051, -2.3065703] }, "properties": { "Avg Spd": "69", "site name":"M5/7995A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.562737, -2.532792] }, "properties": { "Avg Spd": "63", "site name":"M5/8291A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 51.022366, -3.0584555] }, "properties": { "Avg Spd": "66", "site name":"M5/9061A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.638138, -2.1213162] }, "properties": { "Avg Spd": "60", "site name":"M54/3154A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.382423, -2.276999] }, "properties": { "Avg Spd": "52", "site name":"M56/8114J" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.357853, -2.3074746] }, "properties": { "Avg Spd": "68", "site name":"M56/8150A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.35296, -2.5017958] }, "properties": { "Avg Spd": "71", "site name":"M56/8284B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.51303, -1.8663771] }, "properties": { "Avg Spd": "None", "site name":"M6/5838B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 52.568817, -2.0090396] }, "properties": { "Avg Spd": "None", "site name":"M6/5962B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.10618, -2.3393297] }, "properties": { "Avg Spd": "70", "site name":"M6/6656B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.202194, -2.3881717] }, "properties": { "Avg Spd": "None", "site name":"M6/6772K" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.364098, -2.5098164] }, "properties": { "Avg Spd": "67", "site name":"M6/6988B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.37376, -2.507918] }, "properties": { "Avg Spd": "70", "site name":"M6/6998A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.44136, -2.585668] }, "properties": { "Avg Spd": "69", "site name":"M6/7096B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.511726, -2.6812334] }, "properties": { "Avg Spd": "71", "site name":"M6/7200B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.607395, -2.6886344] }, "properties": { "Avg Spd": "66", "site name":"M6/7313B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.694977, -2.677446] }, "properties": { "Avg Spd": "70", "site name":"M6/7412B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.792267, -2.667341] }, "properties": { "Avg Spd": "71", "site name":"M6/7536A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.47897, -2.1190703] }, "properties": { "Avg Spd": "69", "site name":"M60/9462B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.457695, -2.1360583] }, "properties": { "Avg Spd": "72", "site name":"M60/9492A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.730026, -2.6409042] }, "properties": { "Avg Spd": "69", "site name":"M61/2347A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.434002, -2.5143867] }, "properties": { "Avg Spd": "72", "site name":"M62/1324A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.439064, -2.467901] }, "properties": { "Avg Spd": "69", "site name":"M62/1355B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.63014, -2.0159445] }, "properties": { "Avg Spd": "71", "site name":"M62/1758A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.7002, -1.7447299] }, "properties": { "Avg Spd": "65", "site name":"M62/1962B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.731766, -1.6080424] }, "properties": { "Avg Spd": "65", "site name":"M62/2099A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.72793, -1.4905986] }, "properties": { "Avg Spd": "62", "site name":"M62/2179L" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.710957, -1.2888451] }, "properties": { "Avg Spd": "69", "site name":"M62/2324A" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.708435, -1.2831153] }, "properties": { "Avg Spd": "64", "site name":"M62/2328B" } }
+,
+{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 53.757324, -1.5137227] }, "properties": { "Avg Spd": "63", "site name":"M621/1133A" } }
+] }
