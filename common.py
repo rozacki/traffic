@@ -2,10 +2,12 @@ import logging
 import logging.config
 from datetime import datetime
 import argparse
+import os
 
+configs_base_folder='configs'
 
 def get_logger(name='main'):
-    logging.config.fileConfig('logging.conf')
+    logging.config.fileConfig(os.path.join(configs_base_folder, 'logging.conf')
     return logging.getLogger(name)
 
 

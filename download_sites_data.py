@@ -4,7 +4,7 @@ import argparse
 from datetime import datetime, timedelta, time
 import os
 
-from common import get_logger, valid_date
+from common import get_logger, valid_date, configs_base_folder
 
 endpoint = 'http://webtris.highwaysengland.co.uk/api/v1.0/reports/daily?sites={site_id}' \
            '&start_date={start_day:02}{start_month:02}{start_year}' \
@@ -21,7 +21,7 @@ base_site_data_folder = 'data/sites'
 
 
 def load_sites_info(file_name):
-    with open(os.path.join(base_site_data_folder, file_name)) as f:
+    with open(os.path.join(configs_base_folder, file_name)) as f:
         return json.load(f)
 
 
