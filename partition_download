@@ -1,0 +1,7 @@
+nohup python download_sites_data.py -s 2020-01-01 -e 2020-04-22 --site 1 --sites-count 100 > /dev/null 2>1&
+nohup python download_sites_data.py -s 2020-01-01 -e 2020-04-22 --site 100 --sites-count 100 > /dev/null 2>1&
+nohup python download_sites_data.py -s 2020-01-01 -e 2020-04-22 --site 200  --sites-count 100 > /dev/null 2>1&
+nohup python download_sites_data.py -s 2020-01-01 -e 2020-04-22 --site 300 --sites-count 100 > /dev/null 2>1&
+
+
+
