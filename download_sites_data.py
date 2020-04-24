@@ -4,7 +4,7 @@ import argparse
 from datetime import datetime, timedelta, time
 import os
 
-from common import get_logger, valid_date, configs_base_folder
+from common import get_logger, valid_date, load_sites_info
 
 endpoint = 'http://webtris.highwaysengland.co.uk/api/v1.0/reports/daily?sites={site_id}' \
            '&start_date={start_day:02}{start_month:02}{start_year}' \
@@ -16,13 +16,6 @@ logger = get_logger()
 # 400 wrong format or date too old
 # 204 date is missing
 # 200 date fetched
-
-base_site_data_folder = 'data/sites'
-
-
-def load_sites_info(file_name):
-    with open(os.path.join(configs_base_folder, file_name)) as f:
-        return json.load(f)
 
 
 def find_site_start_year(site_id, start_year):
@@ -98,7 +91,7 @@ def download_sites_daily_reports(file_name, startdate, enddate, sites_count, sit
     site_start_found = False
     for site_dict in sites_json['sites']:
         if not site_start_found and site_start != int(site_dict['Id']):
-            logger.debug(f'start site {site_start} not found {site_dict["Id"]}')
+            logger.debug(f'start site {site_start} not found {site_dict["Id"]}, continuing')
             continue
         else:
             site_start_found = True

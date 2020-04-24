@@ -3,8 +3,16 @@ import logging.config
 from datetime import datetime
 import argparse
 import os
+import json
 
 configs_base_folder='configs'
+base_site_data_folder = 'data/sites'
+
+
+def load_sites_info(file_name='sites.json'):
+    with open(os.path.join(configs_base_folder, file_name)) as f:
+        return json.load(f)
+
 
 def get_logger(name='main'):
     logging.config.fileConfig(os.path.join(configs_base_folder, 'logging.conf'))
@@ -17,3 +25,24 @@ def valid_date(s):
     except ValueError:
         msg = "Not a valid date: '{0}'.".format(s)
         raise argparse.ArgumentTypeError(msg)
+
+
+def get_sites_info(site_start=1, sites_count=1):
+    '''
+    return of sites_count dictionary starting from site_start position
+    :param site_start:
+    :param sites_count:
+    :return:
+    '''
+    sites = load_sites_info(file_name='sites.json')
+    sites = { int(i['Id']): i for i in sites['sites']}
+    sites_to_return = {}
+    for key, val in sites.items():
+        # seek for index
+        if key < site_start:
+            continue
+        # check if reached sites count
+        if list(sites.keys()).index(key)+1 == site_start + sites_count:
+            break
+        sites_to_return[key] = val
+    return sites_to_return
