@@ -87,6 +87,43 @@ def get_sites_snapshot2(datasource, date):
 
 
 def get_site_timeseries(datasource, site, startdate, enddate):
+    '''
+    {
+    "type": "FeatureCollection",
+    "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.519078,
+          -1.660633
+        ]
+      },
+      "properties": {
+        "times": [
+          {
+            "time": "2016-01-01T00:14:00.000Z",
+            "avg speed": "76"
+          },
+          {
+            "time": "2016-01-01T00:29:00.000Z",
+            "avg speed": "74"
+          },
+          {
+            "time": "2016-01-01T00:44:00.000Z",
+            "avg speed": "70"
+          },
+          {
+            "time": "2016-01-01T00:59:00.000Z",
+            "avg speed": "74"
+          },
+    :param datasource:
+    :param site:
+    :param startdate:
+    :param enddate:
+    :return:
+    '''
     curs = _druid_get_site_timeseries(datasource, site, startdate, enddate)
     features = []
     point_added = False
@@ -103,8 +140,42 @@ def get_site_timeseries(datasource, site, startdate, enddate):
     feature_collection = FeatureCollection(features)
     print(dumps(feature_collection))
 
+
+def get_site_timeseries2(datasource, site, startdate, enddate):
+    '''
+    {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "geometry": { "type": "Point", "coordinates": [-1.660633, 51.519078] },
+          "properties": { "time": "2016-01-01T00:14:00.000Z", "speed": "76" }
+        },
+        {
+          "type": "Feature",
+          "geometry": { "type": "Point", "coordinates": [-1.660633, 51.519078] },
+          "properties": { "time": "2016-01-01T00:29:00.000Z", "speed": "74" }
+        },
+        {
+          "type": "Feature",
+          "geometry": { "type": "Point", "coordinates": [-1.660633, 51.519078] },
+          "properties": { "time": "2016-01-01T00:44:00.000Z", "speed": "70" }
+        },
+    :return:
+    '''
+    curs = _druid_get_site_timeseries(datasource, site, startdate, enddate)
+    features = []
+    for row in curs:
+        features.append(Feature(geometry=Point((float(row.Longitude), float(row.Latitude))),
+                                properties={'time': row.report_date_time, 'avg speed': row.avg_speed}))
+
+    feature_collection = FeatureCollection(features)
+    print(dumps(feature_collection))
+
 #get_sites_snapshot(datasource='200_sites_2016', date='2016-01-01 00:14:00.000')
 
 #get_sites_snapshot2(datasource='200_sites_2016', date='2016-01-01 00:14:00.000')
 
-get_site_timeseries(datasource='200_sites_2016', site=137, startdate='2016-01-01 00:14:00', enddate='2016-01-02 00:14:00')
+#get_site_timeseries(datasource='200_sites_2016', site=137, startdate='2016-01-01 00:14:00', enddate='2016-01-02 00:14:00')
+
+get_site_timeseries2(datasource='200_sites_2016', site=137, startdate='2016-01-01 00:14:00', enddate='2016-01-02 00:14:00')

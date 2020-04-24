@@ -7,7 +7,7 @@ import os
 configs_base_folder='configs'
 
 def get_logger(name='main'):
-    logging.config.fileConfig(os.path.join(configs_base_folder, 'logging.conf')
+    logging.config.fileConfig(os.path.join(configs_base_folder, 'logging.conf'))
     return logging.getLogger(name)
 
 

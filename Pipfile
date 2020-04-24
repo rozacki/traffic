@@ -4,6 +4,8 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pandas = "*"
+plotly = "*"
 
 [packages]
 requests = "*"
@@ -16,6 +18,7 @@ pre-commit = "==1.17.0"
 tox = "==3.11.1"
 pydruid = "==0.5.8"
 geojson = "*"
+jupyter = "*"
 
 [requires]
 python_version = "3.7"
