@@ -1,7 +1,7 @@
 import argparse
 
 from pydruid.db import connect
-from common import get_logger, load_sites_info, get_sites_info
+from common import get_logger, get_sites_info
 from geojson import Point, Feature, FeatureCollection, dumps
 
 logger = get_logger()
@@ -29,6 +29,24 @@ def _druid_get_sites_snapshot(datasource, date):
         f'__time report_date_time FROM "{datasource}" '
         f'where __time=TIMESTAMP %(date)s', {'date': date})
 
+    return curs
+
+
+def _druid_get_road_timeseries(datasource, road, startdate, enddate):
+    conn = _druid_get_connection()
+    curs = conn.cursor()
+
+    # column names must follow python class name convention otherwise they will be converted into _numbers
+    logger.debug(f'start query {locals()}')
+    curs.execute(
+        f'SELECT "0 - 520 cm" lenght1_vehicles , "1160+ cm" lenght4_vehicles, "521 - 660 cm" lenght2_vehicles, '
+        f'"661 - 1160 cm" lenght3_vehicles, "Avg mph" avg_speed, "Description", "Id", "Latitude", "Longitude", "Name", '
+        f'"Report Date" report_date, "Site Name" site_name, "Status", "Time Interval" time_interval, '
+        f'"Time Period Ending" time_period_ending, "Total Volume" total_volume, '
+        f'__time report_date_time FROM "{datasource}" '
+        f'where __time>=TIMESTAMP %(startdate)s and __time<TIMESTAMP %(enddate)s '
+        f'and \"road\"=%(road)s', {'startdate': startdate, 'enddate': enddate, 'road': road})
+    logger.debug('stop query')
     return curs
 
 
@@ -175,11 +193,46 @@ def get_site_timeseries3(datasource, startdate, enddate, site_start=1, sites_cou
 
     print(dumps(feature_collection))
 
+
+def get_road_timeseries(datasource, startdate, enddate, road):
+    '''
+        {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "geometry": { "type": "Point", "coordinates": [-1.660633, 51.519078] },
+              "properties": { "time": "2016-01-01T00:14:00.000Z", "speed": "76" }
+            },
+            {
+              "type": "Feature",
+              "geometry": { "type": "Point", "coordinates": [-1.660633, 51.519078] },
+              "properties": { "time": "2016-01-01T00:29:00.000Z", "speed": "74" }
+            },
+            {
+              "type": "Feature",
+              "geometry": { "type": "Point", "coordinates": [-1.660633, 51.519078] },
+              "properties": { "time": "2016-01-01T00:44:00.000Z", "speed": "70" }
+            },
+        :return:
+        '''
+    features = []
+    curs = _druid_get_road_timeseries(datasource, road, startdate, enddate)
+    for row in curs:
+        features.append(Feature(geometry=Point((float(row.Longitude), float(row.Latitude))),
+                                properties={'time': row.report_date_time, 'avg speed': row.avg_speed}))
+    feature_collection = FeatureCollection(features)
+
+    print(dumps(feature_collection))
+
+
 #get_sites_snapshot(datasource='200_sites_2016', date='2016-01-01 00:14:00.000')
 
 #get_sites_snapshot2(datasource='200_sites_2016', date='2016-01-01 00:14:00.000')
 
 #get_site_timeseries(datasource='200_sites_2016', site=137, startdate='2016-01-01 00:14:00', enddate='2016-01-02 00:14:00')
 
-get_site_timeseries3(datasource='200_sites_2016',
-                     startdate='2016-01-01 00:14:00', enddate='2016-01-02 00:14:00', site_start=1, sites_count=50)
+# get_site_timeseries3(datasource='200_sites_2016',
+#                      startdate='2016-01-01 00:14:00', enddate='2016-01-02 00:14:00', site_start=1, sites_count=50)
+
+get_road_timeseries('roads', startdate='2019-01-01 00:00:00', enddate='2019-01-01 00:29:00', road='M5')

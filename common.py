@@ -10,6 +10,7 @@ configs_base_folder='configs'
 base_site_data_folder = 'data/sites'
 base_road_data_folder = 'data/roads'
 
+
 def load_sites_info(file_name='sites.json'):
     '''
     :param file_name:
