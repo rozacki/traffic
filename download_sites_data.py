@@ -18,19 +18,6 @@ logger = get_logger()
 # 200 date fetched
 
 
-def find_site_start_year(site_id, start_year):
-    '''
-    Deprecated
-    :param site_id:
-    :param start_year:
-    :return:
-    '''
-    for year in range(start_year, datetime.now().year):
-        url = endpoint.format(site_id=site_id, year=year)
-        res = requests.get(endpoint.format(site_id=site_id, year=year))
-        logger.info(f'{site_id}/{year} {res.status_code}')
-
-
 def get_site_daily_report(site_id, startdate):
     delta_day = timedelta(days=1)
     enddate = startdate + delta_day
@@ -89,15 +76,6 @@ def download_site_lazily(site_dict, startdate, enddate):
     while startdate < enddate:
         yield startdate, get_site_daily_report(site_dict['Id'], startdate)
         startdate = startdate + delta_day
-
-
-def download_and_store_site(site_dict, startdate, enddate):
-    delta_day = timedelta(days=1)
-    while startdate < enddate:
-        site_daily_report = get_site_daily_report(site_dict['Id'], startdate)
-        store_site_daily_report(site_daily_report, site_dict, startdate)
-        startdate = startdate + delta_day
-    logger.info(f'finished loading and storing site {site_dict["Id"]}')
 
 
 def download_sites_daily_reports(sites_file, startdate, enddate, site_start, sites_count):
