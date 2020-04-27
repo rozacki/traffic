@@ -4,7 +4,7 @@ import argparse
 from datetime import datetime, timedelta, time
 import os
 
-from common import get_logger, valid_date, load_sites_info, get_road_sites, base_site_data_folder, base_road_data_folder
+from common import get_logger, valid_date, load_sites_info, get_road_sites, base_site_data_folder, base_road_data_folder, get_sites
 
 endpoint = 'http://webtris.highwaysengland.co.uk/api/v1.0/reports/daily?sites={site_id}' \
            '&start_date={start_day:02}{start_month:02}{start_year}' \
@@ -40,9 +40,11 @@ def get_site_daily_report(site_id, startdate):
                           stop_year=enddate.year, stop_month=enddate.month, stop_day=enddate.day)
     res = requests.get(url)
     logger.debug(f'{url}')
-    logger.info(f'{site_id}/{startdate.year}/{startdate.month}/{startdate.day} {res.status_code}')
+    logger.info(f'downloading daily report for site {site_id} date {startdate}'
+                f'{res.status_code}')
     if res.status_code == 200:
         return res.json()
+    logger.info(f'missing daily report for site {site_id} date {startdate}')
     return  None
 
 
@@ -70,7 +72,7 @@ def store_site_daily_report(site_daily_report, site_dict, date, partition_by_roa
         folder = os.path.join(base_road_data_folder, road_name, str(site_dict["Id"]), str(date.year), str(date.month))
         file_name = f'{site_dict["Id"]}_{date.year}_{date.month}_{date.day}.json'
     else:
-        folder = os.path.join(base_site_data_folder, site_dict["Id"], date.year, date.month)
+        folder = os.path.join(base_site_data_folder, str(site_dict["Id"]), str(date.year), str(date.month))
         file_name = f'{site_dict["Id"]}_{date.year}_{date.month}_{date.day}.json'
     os.makedirs(folder, exist_ok=True)
     with open(os.path.join(folder, file_name), mode='w') as f:
@@ -78,6 +80,7 @@ def store_site_daily_report(site_daily_report, site_dict, date, partition_by_roa
         for measure in site_daily_report:
             json.dump(measure, f)
             f.write('\n')
+    logger.info(f'daily report stored here {folder}/{file_name}')
 
 
 def download_site_lazily(site_dict, startdate, enddate):
@@ -97,29 +100,21 @@ def download_and_store_site(site_dict, startdate, enddate):
     logger.info(f'finished loading and storing site {site_dict["Id"]}')
 
 
-def download_sites_daily_reports(sites_file, startdate, enddate, sites_count, site_start):
+def download_sites_daily_reports(sites_file, startdate, enddate, site_start, sites_count):
     '''
-    TODO: refactor
-    Loads sites.json and for each site id downloads all json between startdate and enddate
     :param sites_file:
+    :param startdate:
+    :param enddate:
+    :param sites_count:
+    :param site_start:
     :return:
     '''
-    sites_dicts = load_sites_info(sites_file)
-    logger.info(f'sites {sites_dicts["row_count"]}')
-    sites_downloaded = 0
-    site_start_found = False
-    for site_dict in sites_dicts['sites']:
-        if not site_start_found and site_start != int(site_dict['Id']):
-            logger.debug(f'start site {site_start} not found {site_dict["Id"]}, continuing')
-            continue
-        else:
-            site_start_found = True
-
-        if sites_downloaded >= sites_count:
-            logger.debug(f'max number of sites {sites_count} reached')
-            break
-        sites_downloaded = sites_downloaded + 1
-        download_and_store_site(site_dict, startdate, enddate)
+    sites = get_sites(sites_file, site_start, sites_count )
+    for key, site_dict in sites.items():
+        reports = download_site_lazily(site_dict, startdate, enddate)
+        for report_date, site_daily_report in reports:
+            store_site_daily_report(site_daily_report, site_dict, report_date)
+    logger.info(f'finished loading ans storing {len(sites)} sites starting from {site_start}')
 
 
 def download_road_daily_reports(sites_file, road_name, startdate, enddate):
@@ -136,7 +131,8 @@ def download_road_daily_reports(sites_file, road_name, startdate, enddate):
     for key, site_dict in sites.items():
         reports = download_site_lazily(site_dict, startdate, enddate)
         for report_date, site_daily_report in reports:
-            store_site_daily_report(site_daily_report, site_dict, report_date, partition_by_road=True, road_name=road_name)
+            store_site_daily_report(site_daily_report, site_dict, report_date, partition_by_road=True,
+                                    road_name=road_name)
     logger.info(f'finished loading ans storing {len(sites)} sites for road {road_name}')
 
 
@@ -145,20 +141,16 @@ if __name__ == '__main__':
     parser.add_argument('--site', type=int, default=1, help='Seek and start downloading from this site')
     parser.add_argument('--sites-count', type=int, default=1, help='How many sites try to download. '
                                                                      'Note some data may no be available for site')
-    parser.add_argument('--sites-file', type=str, default='sites.json')
+    parser.add_argument('--sites-file', type=str, default='sites_enriched_roads.csv')
     parser.add_argument('-s', '--startdate', help="The Start Date - format YYYY-MM-DD", type=valid_date)
     parser.add_argument('-e', '--enddate', help="The Stop Date - format YYYY-MM-DD", type=valid_date,
                         default=datetime.now().strftime('%Y-%m-%d'))
     parser.add_argument('--road', type=str)
     args = parser.parse_args()
 
-    if args.site:
-        args.site_count = 1
-
     if args.road:
-        args.sites_file = 'sites_enriched_roads.csv'
         download_road_daily_reports(args.sites_file, args.road, args.startdate, args.enddate)
         exit(0)
 
     # loads data for all sites in sites_file
-    download_sites_daily_reports(args.sites_file, args.startdate, args.enddate, args.sites_count, args.site)
+    download_sites_daily_reports(args.sites_file, args.startdate, args.enddate, args.site, args.sites_count)

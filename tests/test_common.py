@@ -19,3 +19,16 @@ def test_get_road_sites():
                              "'Latitude': 51.5206446979317, 'Status': 'Active', " \
                              "'MeasurementSiteName': 'M4 westbound between J16 and J17', 'MeasurementSiteID': 24.0, " \
                              "'LegacyMeasurementSiteID': 30028493.0, 'road': 'M4'}"
+
+
+def test_get_sites():
+    sites = get_sites('sites_enriched_roads.csv', 1, 10)
+    assert type(sites) == type(dict())
+    assert len(sites) == 10
+    assert str(sites[1]) == "{'Id': 1, 'Name': 'MIDAS site at M4/2295A2 priority 1 on link 105009001; GPS Ref: 502816;" \
+                            "178156; Westbound', 'Description': 'M4/2295A2', 'Longitude': -0.520379557723297, " \
+                            "'Latitude': 51.49301153671121, 'Status': 'Inactive', 'MeasurementSiteName': " \
+                            "'M4 westbound between J4B and J5', 'MeasurementSiteID': 1.0, " \
+                            "'LegacyMeasurementSiteID': 30027234.0, 'road': 'M4'}"
+
+
