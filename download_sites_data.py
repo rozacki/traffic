@@ -78,6 +78,16 @@ def download_site_lazily(site_dict, startdate, enddate):
         startdate = startdate + delta_day
 
 
+def download_and_store_reports(sites, startdate, enddate, partition_by_road=False, road_name=None):
+    logger.info(f'start loading {len(sites)} sites from {startdate} till {enddate}')
+    for key, site_dict in sites.items():
+        reports = download_site_lazily(site_dict, startdate, enddate)
+        for report_date, site_daily_report in reports:
+            store_site_daily_report(site_daily_report, site_dict, report_date, partition_by_road=partition_by_road,
+                                    road_name=road_name)
+    logger.info(f'finished loading and storing {len(sites)}')
+
+
 def download_sites_daily_reports(sites_file, startdate, enddate, site_start, sites_count):
     '''
     :param sites_file:
@@ -87,13 +97,8 @@ def download_sites_daily_reports(sites_file, startdate, enddate, site_start, sit
     :param site_start:
     :return:
     '''
-    sites = get_sites(sites_file, site_start, sites_count )
-    for key, site_dict in sites.items():
-        reports = download_site_lazily(site_dict, startdate, enddate)
-        for report_date, site_daily_report in reports:
-            store_site_daily_report(site_daily_report, site_dict, report_date)
-    logger.info(f'finished loading ans storing {len(sites)} sites starting from {site_start}')
-
+    sites = get_sites(sites_file, site_start, sites_count)
+    download_and_store_reports(sites, startdate, enddate)
 
 def download_road_daily_reports(sites_file, road_name, startdate, enddate):
     '''
@@ -106,11 +111,7 @@ def download_road_daily_reports(sites_file, road_name, startdate, enddate):
     '''
     sites = get_road_sites(sites_file, road_name)
     logger.info(f'start loading {len(sites)} sites for road {road_name}')
-    for key, site_dict in sites.items():
-        reports = download_site_lazily(site_dict, startdate, enddate)
-        for report_date, site_daily_report in reports:
-            store_site_daily_report(site_daily_report, site_dict, report_date, partition_by_road=True,
-                                    road_name=road_name)
+    download_and_store_reports(sites, startdate, enddate, True, road_name)
     logger.info(f'finished loading ans storing {len(sites)} sites for road {road_name}')
 
 
