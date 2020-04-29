@@ -1,0 +1,273 @@
+{
+  "type" : "index_parallel",
+  "id" : "index_parallel_M4_M5_roads_strong_types_bknjemeb_2020-04-28T18:56:24.458Z",
+  "groupId" : "index_parallel_M4_M5_roads_strong_types_bknjemeb_2020-04-28T18:56:24.458Z",
+  "resource" : {
+    "availabilityGroup" : "index_parallel_M4_M5_roads_strong_types_bknjemeb_2020-04-28T18:56:24.458Z",
+    "requiredCapacity" : 1
+  },
+  "spec" : {
+    "dataSchema" : {
+      "dataSource" : "M4_M5_roads_strong_types",
+      "timestampSpec" : {
+        "column" : "Report Date Time",
+        "format" : "iso",
+        "missingValue" : null
+      },
+      "dimensionsSpec" : {
+        "dimensions" : [ {
+          "type" : "long",
+          "name" : "0 - 10 mph",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "0 - 520 cm",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "11 - 15 mph",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "16 - 20 mph",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "21 - 25 mph",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "26 - 30 mph",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "31 - 35 mph",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "36 - 40 mph",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "41 - 45 mph",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "46 - 50 mph",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "51 - 55 mph",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "56 - 60 mph",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "61 - 70 mph",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "71 - 80 mph",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "80+ mph",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "521 - 660 cm",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "661 - 1160 cm",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "1160+ cm",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "Avg mph",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "string",
+          "name" : "Description",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : true
+        }, {
+          "type" : "long",
+          "name" : "Id",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "float",
+          "name" : "Latitude",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "LegacyMeasurementSiteID",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "float",
+          "name" : "Longitude",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "long",
+          "name" : "MeasurementSiteID",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "string",
+          "name" : "MeasurementSiteName",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : true
+        }, {
+          "type" : "string",
+          "name" : "Name",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : true
+        }, {
+          "type" : "string",
+          "name" : "Report Date",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : true
+        }, {
+          "type" : "string",
+          "name" : "road",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : true
+        }, {
+          "type" : "string",
+          "name" : "Site Name",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : true
+        }, {
+          "type" : "string",
+          "name" : "Status",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : true
+        }, {
+          "type" : "long",
+          "name" : "Time Interval",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        }, {
+          "type" : "string",
+          "name" : "Time Period Ending",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : true
+        }, {
+          "type" : "long",
+          "name" : "Total Volume",
+          "multiValueHandling" : "SORTED_ARRAY",
+          "createBitmapIndex" : false
+        } ],
+        "dimensionExclusions" : [ "Report Date Time" ]
+      },
+      "metricsSpec" : [ ],
+      "granularitySpec" : {
+        "type" : "uniform",
+        "segmentGranularity" : "DAY",
+        "queryGranularity" : "MINUTE",
+        "rollup" : false,
+        "intervals" : null
+      },
+      "transformSpec" : {
+        "filter" : null,
+        "transforms" : [ ]
+      }
+    },
+    "ioConfig" : {
+      "type" : "index_parallel",
+      "inputSource" : {
+        "type" : "local",
+        "baseDir" : "/root/traffic/data/roads",
+        "filter" : "*.json"
+      },
+      "inputFormat" : {
+        "type" : "json",
+        "flattenSpec" : {
+          "useFieldDiscovery" : true,
+          "fields" : [ ]
+        },
+        "featureSpec" : { }
+      },
+      "appendToExisting" : false
+    },
+    "tuningConfig" : {
+      "type" : "index_parallel",
+      "maxRowsPerSegment" : 5000000,
+      "maxRowsInMemory" : 1000000,
+      "maxBytesInMemory" : 0,
+      "maxTotalRows" : null,
+      "numShards" : null,
+      "splitHintSpec" : null,
+      "partitionsSpec" : {
+        "type" : "dynamic",
+        "maxRowsPerSegment" : 5000000,
+        "maxTotalRows" : null
+      },
+      "indexSpec" : {
+        "bitmap" : {
+          "type" : "concise"
+        },
+        "dimensionCompression" : "lz4",
+        "metricCompression" : "lz4",
+        "longEncoding" : "longs"
+      },
+      "indexSpecForIntermediatePersists" : {
+        "bitmap" : {
+          "type" : "concise"
+        },
+        "dimensionCompression" : "lz4",
+        "metricCompression" : "lz4",
+        "longEncoding" : "longs"
+      },
+      "maxPendingPersists" : 0,
+      "forceGuaranteedRollup" : false,
+      "reportParseExceptions" : false,
+      "pushTimeout" : 0,
+      "segmentWriteOutMediumFactory" : null,
+      "maxNumConcurrentSubTasks" : 1,
+      "maxRetry" : 3,
+      "taskStatusCheckPeriodMs" : 1000,
+      "chatHandlerTimeout" : "PT10S",
+      "chatHandlerNumRetries" : 5,
+      "maxNumSegmentsToMerge" : 100,
+      "totalNumMergeTasks" : 10,
+      "logParseExceptions" : false,
+      "maxParseExceptions" : 2147483647,
+      "maxSavedParseExceptions" : 0,
+      "buildV9Directly" : true,
+      "partitionDimensions" : [ ]
+    }
+  },
+  "context" : {
+    "forceTimeChunkLock" : true
+  },
+  "dataSource" : "M4_M5_roads_strong_types"
+}
