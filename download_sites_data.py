@@ -4,21 +4,19 @@ import argparse
 from datetime import datetime, timedelta, time
 import os
 
-from common import get_logger, valid_date, load_sites_info, get_road_sites, base_site_data_folder, base_road_data_folder, get_sites
-
+from common import valid_date, get_road_sites, base_site_data_folder, base_road_data_folder, get_sites
+from maos import logger
 endpoint = 'http://webtris.highwaysengland.co.uk/api/v1.0/reports/daily?sites={site_id}' \
            '&start_date={start_day:02}{start_month:02}{start_year}' \
            '&end_date={stop_day:02}{stop_month:02}{stop_year}&page=1&page_size=96'
 
-
-logger = get_logger()
 
 # 400 wrong format or date too old
 # 204 date is missing
 # 200 date fetched
 
 
-def get_site_daily_report(site_id, startdate):
+def download_site_daily_report(site_id, startdate):
     delta_day = timedelta(days=1)
     enddate = startdate + delta_day
 
@@ -74,7 +72,7 @@ def download_site_lazily(site_dict, startdate, enddate):
     delta_day = timedelta(days=1)
     logger.info(f'start loading {site_dict["Id"]} from {startdate} till {enddate}')
     while startdate < enddate:
-        yield startdate, get_site_daily_report(site_dict['Id'], startdate)
+        yield startdate, download_site_daily_report(site_dict['Id'], startdate)
         startdate = startdate + delta_day
 
 
@@ -99,6 +97,7 @@ def download_sites_daily_reports(sites_file, startdate, enddate, site_start, sit
     '''
     sites = get_sites(sites_file, site_start, sites_count)
     download_and_store_reports(sites, startdate, enddate)
+
 
 def download_road_daily_reports(sites_file, road_name, startdate, enddate):
     '''
