@@ -14,6 +14,9 @@ max_threads = 4*5
 max_threads_semaphore = threading.Semaphore(max_threads)
 
 
+def _get_thread_name(id, startdate, enddate):
+    return f'site-{id}-from-{startdate}-to-{enddate}'
+
 def run_process(cmd):
     '''
     Download
@@ -37,15 +40,16 @@ def run_process(cmd):
 
 
 def wrap_download_and_store_reports(site, startdate, enddate):
-    logger.info(f'starting thread {threading.get_ident()} for site {site}')
+    current_thread = threading.current_thread()
+    logger.info(f'starting thread {current_thread.getName()}')
     max_threads_semaphore.acquire()
-    logger.info(f'started thread {threading.get_ident()}')
+    logger.info(f'started thread {current_thread.getName()}')
     try:
         download_and_store_reports(site, startdate, enddate)
-    except Exception  as ex:
+    except Exception as ex:
         logger.error(str(ex))
     max_threads_semaphore.release()
-    logger.info(f'finished thread {threading.get_ident()}')
+    logger.info(f'finished thread {current_thread.getName()}')
 
 
 def download_reports_async(site, sites_count, startdate, enddate, download_folder='data/sites',
@@ -72,14 +76,15 @@ def download_reports_async(site, sites_count, startdate, enddate, download_folde
     threads = []
     sites = get_sites('sites_enriched_roads.csv', site, sites_count)
     for id, site in sites.items():
-        t = threading.Thread(target=wrap_download_and_store_reports, args=({id: site}, startdate, enddate,), daemon=True)
+        t = threading.Thread(target=wrap_download_and_store_reports,
+                             args=({id: site}, startdate, enddate, ), daemon=True)
+        t.setName(_get_thread_name(id, startdate, enddate))
         t.start()
         threads.append(t)
 
     for key, thread in enumerate(threads):
-        logger.info(f'wait for {threading.get_ident()} thread to finish')
+        logger.info(f'wait for {thread.getName()} thread to finish')
         thread.join()
-        logger.info(f'thread {threading.get_ident()} finished')
 
 
 if __name__ == '__main__':
