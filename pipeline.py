@@ -69,7 +69,8 @@ def download_reports_async(site, sites_count, startdate, enddate, download_folde
         raise Exception('maximum size folder')
     try:
         os.removedirs(download_folder)
-    except:
+    except Exception as ex:
+        logger.error(ex)
         pass
     logger.info(f'folder {download_folder} content removed')
 
