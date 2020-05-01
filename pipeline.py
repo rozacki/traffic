@@ -2,12 +2,11 @@ import os
 from subprocess import Popen, PIPE
 import argparse
 from datetime import datetime
-
 import threading
+import shutil
 
 from common import valid_date, get_sites
 from download_sites_data import download_and_store_reports
-
 from maos import logger
 
 max_threads = 4*5
@@ -16,6 +15,7 @@ max_threads_semaphore = threading.Semaphore(max_threads)
 
 def _get_thread_name(id, startdate, enddate):
     return f'site-{id}-from-{startdate}-to-{enddate}'
+
 
 def run_process(cmd):
     '''
@@ -68,7 +68,7 @@ def download_reports_async(site, sites_count, startdate, enddate, download_folde
     if (enddate - startdate).days * sites_count > maximum_folder_size:
         raise Exception('maximum size folder')
     try:
-        os.removedirs(download_folder)
+        shutil.rmtree(download_folder)
     except Exception as ex:
         logger.error(ex)
         pass
