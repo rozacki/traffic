@@ -15,7 +15,7 @@ cpus = 4
 threads_per_cpu = 5
 max_threads = cpus*threads_per_cpu
 max_threads_semaphore = threading.Semaphore(max_threads)
-path_to_post_index_path_script = '/root/druid/apache-druid-0.17.0/bin/post_index_path'
+path_to_post_index_path_script = '/root/druid/apache-druid-0.17.0/bin/post-index-path'
 
 
 def _get_thread_name(site_id, startdate, enddate):
