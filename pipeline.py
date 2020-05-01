@@ -59,6 +59,7 @@ def ingest(datasource_name, source_folder, ingestion_template_file_name='ingesti
     task_string = template.format(datasource_name=datasource_name, source_folder=source_folder)
     with tempfile.NamedTemporaryFile(mode='w') as tmp:
         tmp.write(task_string)
+        tmp.flush()
         logger.info(f'task definition stored in {tmp.name}')
         cmd = [path_to_post_index_path_script, '--file', tmp.name, '--url', url]
         logger.info(f'{cmd}')
