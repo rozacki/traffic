@@ -32,7 +32,7 @@ class MaosArgsParser():
     def ingest(self):
         parser = ArgumentParser(description='ingest reports to druid')
         parser.add_argument('--datasource', help='data source name', required=True)
-        parser.add_argument('--source_folder', help='data source name', default='data/sites')
+        parser.add_argument('--source_folder', help='data source name', required=True)
 
         args = parser.parse_args(sys.argv[2:])
         pipeline.ingest(args.datasource, args.source_folder)
