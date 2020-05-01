@@ -59,10 +59,10 @@ def ingest(datasource_name, source_folder, ingestion_template_file_name='ingesti
     task_string = template.format(datasource_name=datasource_name, source_folder=source_folder)
     with tempfile.NamedTemporaryFile() as tmp:
         tmp.write(str.encode(task_string))
-    logger.info(f'task definition stored in {tmp.name}')
-    cmd = [path_to_post_index_path_script,'--file', tmp.name, '--url', url]
-    logger.info(f'{cmd}')
-    run_process(cmd)
+        logger.info(f'task definition stored in {tmp.name}')
+        cmd = [path_to_post_index_path_script, '--file', tmp.name, '--url', url]
+        logger.info(f'{cmd}')
+        run_process(cmd)
 
 
 def wrap_download_and_store_reports(site, startdate, enddate):
