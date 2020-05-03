@@ -149,9 +149,8 @@
           }}
         ]
       }}
-    }}
-  }},
-  "ioConfig": {{
+    }},
+    "ioConfig": {{
       "type": "index_parallel",
       "inputSource": {{
         "type": "local",
@@ -172,4 +171,5 @@
         }},
       "appendToExisting": {append_to_existing}
     }}
+  }}
 }}
