@@ -150,5 +150,26 @@
         ]
       }}
     }}
-  }}
+  }},
+  "ioConfig": {{
+      "type": "index_parallel",
+      "inputSource": {{
+        "type": "local",
+        "baseDir": "/root/traffic/data/sites",
+        "filter": "*.json"
+      },
+      "inputFormat": {{
+        "type": "json",
+        "flattenSpec": {{
+          "useFieldDiscovery": true,
+          "fields": [
+
+          ]
+        }},
+        "featureSpec": {{
+
+        }}
+        }},
+      "appendToExisting": {append_to_existing}
+    }}
 }}
