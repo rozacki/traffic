@@ -157,7 +157,7 @@
         "type": "local",
         "baseDir": "/root/traffic/data/sites",
         "filter": "*.json"
-      },
+      }},
       "inputFormat": {{
         "type": "json",
         "flattenSpec": {{
