@@ -45,7 +45,7 @@ def run_process(cmd):
         return False
 
 
-def ingest(datasource_name, source_folder, ingestion_template_file_name='ingestion_template.json',
+def ingest(datasource_name, source_folder, append_to_existing, ingestion_template_file_name='ingestion_template.json',
            url='http://localhost:8081'):
     '''
     Ingest data from the folder
@@ -56,7 +56,9 @@ def ingest(datasource_name, source_folder, ingestion_template_file_name='ingesti
     logger.info(f'used {template} template to post the task')
     with open(template) as f:
         template = f.read()
-    task_string = template.format(datasource_name=datasource_name, source_folder=source_folder)
+    append_to_existing = 'true' if append_to_existing else "false"
+    task_string = template.format(datasource_name=datasource_name, source_folder=source_folder,
+                                  append_to_existing=append_to_existing)
     with tempfile.NamedTemporaryFile(mode='w') as tmp:
         tmp.write(task_string)
         tmp.flush()
