@@ -59,7 +59,7 @@ def ingest(datasource_name, source_folder, append_to_existing, ingestion_templat
     append_to_existing = 'true' if append_to_existing else "false"
     task_string = template.format(datasource_name=datasource_name, source_folder=source_folder,
                                   append_to_existing=append_to_existing)
-    print(task_string)
+    logger.info(task_string)
     with tempfile.NamedTemporaryFile(mode='w') as tmp:
         tmp.write(task_string)
         tmp.flush()
