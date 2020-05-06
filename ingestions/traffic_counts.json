@@ -1,0 +1,111 @@
+{
+  "type" : "index_parallel",
+  "id" : "index_parallel_traffic_counts_mclmlfbb_2020-05-03T16:10:17.827Z",
+  "groupId" : "index_parallel_traffic_counts_mclmlfbb_2020-05-03T16:10:17.827Z",
+  "resource" : {
+    "availabilityGroup" : "index_parallel_traffic_counts_mclmlfbb_2020-05-03T16:10:17.827Z",
+    "requiredCapacity" : 1
+  },
+  "spec" : {
+    "dataSchema" : {
+      "dataSource" : "traffic_counts",
+      "timestampSpec" : {
+        "column" : "__time",
+        "format" : "iso",
+        "missingValue" : null
+      },
+      "dimensionsSpec" : {
+        "dimensions" : [ ],
+        "dimensionExclusions" : [ "__time", "count", "Id", "sum_Id" ]
+      },
+      "metricsSpec" : [ {
+        "type" : "count",
+        "name" : "count"
+      }, {
+        "type" : "longSum",
+        "name" : "sum_Id",
+        "fieldName" : "Id",
+        "expression" : null
+      } ],
+      "granularitySpec" : {
+        "type" : "uniform",
+        "segmentGranularity" : "MONTH",
+        "queryGranularity" : "DAY",
+        "rollup" : true,
+        "intervals" : null
+      },
+      "transformSpec" : {
+        "filter" : null,
+        "transforms" : [ {
+          "type" : "expression",
+          "name" : "Id",
+          "expression" : "Id"
+        } ]
+      }
+    },
+    "ioConfig" : {
+      "type" : "index_parallel",
+      "inputSource" : {
+        "type" : "druid",
+        "dataSource" : "traffic",
+        "interval" : "2018-05-04T00:00:00.000Z/2020-05-03T00:00:00.000Z",
+        "filter" : null,
+        "dimensions" : [ "Id" ],
+        "metrics" : null
+      },
+      "inputFormat" : null,
+      "appendToExisting" : false
+    },
+    "tuningConfig" : {
+      "type" : "index_parallel",
+      "maxRowsPerSegment" : 5000000,
+      "maxRowsInMemory" : 1000000,
+      "maxBytesInMemory" : 0,
+      "maxTotalRows" : null,
+      "numShards" : null,
+      "splitHintSpec" : null,
+      "partitionsSpec" : {
+        "type" : "dynamic",
+        "maxRowsPerSegment" : 5000000,
+        "maxTotalRows" : null
+      },
+      "indexSpec" : {
+        "bitmap" : {
+          "type" : "concise"
+        },
+        "dimensionCompression" : "lz4",
+        "metricCompression" : "lz4",
+        "longEncoding" : "longs"
+      },
+      "indexSpecForIntermediatePersists" : {
+        "bitmap" : {
+          "type" : "concise"
+        },
+        "dimensionCompression" : "lz4",
+        "metricCompression" : "lz4",
+        "longEncoding" : "longs"
+      },
+      "maxPendingPersists" : 0,
+      "forceGuaranteedRollup" : false,
+      "reportParseExceptions" : false,
+      "pushTimeout" : 0,
+      "segmentWriteOutMediumFactory" : null,
+      "maxNumConcurrentSubTasks" : 1,
+      "maxRetry" : 3,
+      "taskStatusCheckPeriodMs" : 1000,
+      "chatHandlerTimeout" : "PT10S",
+      "chatHandlerNumRetries" : 5,
+      "maxNumSegmentsToMerge" : 100,
+      "totalNumMergeTasks" : 10,
+      "logParseExceptions" : false,
+      "maxParseExceptions" : 2147483647,
+      "maxSavedParseExceptions" : 0,
+      "buildV9Directly" : true,
+      "partitionDimensions" : [ ]
+    }
+  },
+  "context" : {
+    "forceTimeChunkLock" : true
+  },
+  "dataSource" : "traffic_counts"
+}
