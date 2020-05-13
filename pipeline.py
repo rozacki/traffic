@@ -4,7 +4,7 @@ import threading
 import shutil
 import tempfile
 
-from common import get_sites
+from maos.sites import get_sites
 from download_sites_data import download_and_store_reports
 from maos import logger
 

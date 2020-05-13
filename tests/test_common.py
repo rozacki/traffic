@@ -1,4 +1,5 @@
 from common import *
+from maos.sites import *
 
 logger = get_logger()
 

@@ -4,8 +4,11 @@ import argparse
 from datetime import datetime, timedelta, time
 import os
 
-from common import valid_date, get_road_sites, base_site_data_folder, base_road_data_folder, get_sites
+from common import valid_date, base_site_data_folder, base_road_data_folder
+from maos.sites import get_road_sites, get_sites
 from maos import logger
+
+
 endpoint = 'http://webtris.highwaysengland.co.uk/api/v1.0/reports/daily?sites={site_id}' \
            '&start_date={start_day:02}{start_month:02}{start_year}' \
            '&end_date={stop_day:02}{stop_month:02}{stop_year}&page=1&page_size=96'
