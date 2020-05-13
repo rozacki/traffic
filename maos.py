@@ -66,7 +66,7 @@ class MaosArgsParser:
         parser.add_argument('--overwrite', help='overwrite existing data source', action='store_false')
 
         args = parser.parse_args(sys.argv[2:])
-        pipeline.ingest(args.datasource, args.source_folder, args.append_to_existing)
+        pipeline.ingest(args.datasource, args.source_folder, args.overwrite)
 
 
 if __name__ == '__main__':
