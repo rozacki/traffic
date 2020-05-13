@@ -22,9 +22,11 @@ class MaosArgsParser():
     @staticmethod
     def download():
         parser = ArgumentParser(description='download sites for period of time')
-        parser.add_argument('--site', type=int, default=1, help='Seek and start downloading from this site')
+        parser.add_argument('--site', type=int, default=1, help='Seek and start downloading from this site',
+                            required=True)
         parser.add_argument('--sites-count', type=int, default=1, help='How many sites try to download. '
-                                                                       'Note some data may no be available for site')
+                                                                       'Note some data may no be available for site',
+                            required=True)
         parser.add_argument('--sites-file', type=str, default='sites_enriched_roads.csv')
         parser.add_argument('-s', '--startdate', help="The Start Date - format YYYY-MM-DD", type=valid_date,
                             required=True)
@@ -39,7 +41,7 @@ class MaosArgsParser():
         parser = ArgumentParser(description='ingest reports to druid')
         parser.add_argument('--datasource', help='data source name', required=True)
         parser.add_argument('--source-folder', help='data source name', required=True)
-        parser.add_argument('--append-to-existing', help='append to existing data source', action='store_false')
+        parser.add_argument('--overwrite', help='overwrite existing data source', action='store_false')
 
         args = parser.parse_args(sys.argv[2:])
         pipeline.ingest(args.datasource, args.source_folder, args.append_to_existing)
