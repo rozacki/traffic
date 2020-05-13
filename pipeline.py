@@ -4,7 +4,7 @@ import threading
 import shutil
 import tempfile
 
-from maos.sites import get_sites
+from maos.sites import get_sites, get_link_sites
 from download_sites_data import download_and_store_reports
 from maos import logger
 
@@ -49,7 +49,11 @@ def ingest(datasource_name, source_folder, append_to_existing, ingestion_templat
            url='http://localhost:8081'):
     '''
     Ingest data from the folder
+    :param datasource_name:
     :param source_folder:
+    :param append_to_existing:
+    :param ingestion_template_file_name:
+    :param url:
     :return:
     '''
     template = os.path.join('ingestions', ingestion_template_file_name)
@@ -69,7 +73,7 @@ def ingest(datasource_name, source_folder, append_to_existing, ingestion_templat
         run_process(cmd)
 
 
-def wrap_download_and_store_reports(site, startdate, enddate):
+def _wrap_download_and_store_reports(site, startdate, enddate):
     '''
     This is where thread starts. Here we control number of threads running simultaneously
     :param site:
@@ -89,8 +93,8 @@ def wrap_download_and_store_reports(site, startdate, enddate):
     logger.info(f'finished thread {current_thread.getName()}')
 
 
-def download_reports_async(site, sites_count, startdate, enddate, download_folder='data/sites',
-                           maximum_folder_size=584000):
+def _download_reports_async(sites, startdate, enddate, download_folder='data/sites',
+                            maximum_folder_size=584000):
     '''
     downloads data into folder, checks if it does not overcome maximum limit
     :param sites:
@@ -102,7 +106,7 @@ def download_reports_async(site, sites_count, startdate, enddate, download_folde
     :param maximum_folder_size:
     :return:
     '''
-    if (enddate - startdate).days * sites_count > maximum_folder_size:
+    if (enddate - startdate).days * len(sites) > maximum_folder_size:
         raise Exception('maximum size folder')
     try:
         shutil.rmtree(download_folder)
@@ -112,9 +116,8 @@ def download_reports_async(site, sites_count, startdate, enddate, download_folde
     logger.info(f'folder {download_folder} content removed')
 
     threads = []
-    sites = get_sites('sites_enriched_roads.csv', site, sites_count)
     for id, site in sites.items():
-        t = threading.Thread(target=wrap_download_and_store_reports,
+        t = threading.Thread(target=_wrap_download_and_store_reports,
                              args=({id: site}, startdate, enddate, ), daemon=True)
         t.setName(_get_thread_name(id, startdate, enddate))
         t.start()
@@ -125,16 +128,12 @@ def download_reports_async(site, sites_count, startdate, enddate, download_folde
         thread.join()
 
 
-if __name__ == '__main__':
-    pass
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument('--site', type=int, default=1, help='Seek and start downloading from this site')
-    # parser.add_argument('--sites-count', type=int, default=1, help='How many sites try to download. '
-    #                                                                'Note some data may no be available for site')
-    # parser.add_argument('--sites-file', type=str, default='sites_enriched_roads.csv')
-    # parser.add_argument('-s', '--startdate', help="The Start Date - format YYYY-MM-DD", type=valid_date)
-    # parser.add_argument('-e', '--enddate', help="The Stop Date - format YYYY-MM-DD", type=valid_date,
-    #                     default=datetime.now().strftime('%Y-%m-%d'))
-    # args = parser.parse_args()
-    # #download_reports_async(args.site, args.sites_count, args.startdate, args.enddate)
+def download_sites_reports(site, sites_count, startdate, enddate):
+    sites = get_sites('sites_enriched_roads.csv', site, sites_count)
+    _download_reports_async(sites, startdate, enddate)
+
+
+def download_link_reports(link, startdate, enddate):
+    sites = get_link_sites('sites_enriched_roads.csv', link)
+    _download_reports_async(sites, startdate, enddate)
 
