@@ -51,7 +51,7 @@ def get_road_sites(sites_file, road_name):
 
 def get_sites(sites_file, site_start, sites_count):
     '''
-    returns range of sites starting from site_start
+    return range of sites starting from site_start
     :param sites_file:
     :param site_start:
     :param sites_count:
@@ -60,3 +60,16 @@ def get_sites(sites_file, site_start, sites_count):
     sites = pd.read_csv(os.path.join(configs_base_folder, sites_file))
     sites.set_index('Id', drop=False, inplace=True)
     return sites[sites['Id'] >= site_start][:sites_count].to_dict(orient='index')
+
+
+def get_link_sites(sites_file, link_id):
+    '''
+    return all sites in the link
+    :param sites_file:
+    :param link_id:
+    :return:
+    '''
+    sites = pd.read_csv(os.path.join(configs_base_folder, sites_file))
+    sites.set_index('Id', drop=False, inplace=True)
+    link_sites_mask = sites['Name'].str.contains(link_id, na=False)
+    return sites[link_sites_mask].to_dict(orient='index')

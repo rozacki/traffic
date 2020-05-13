@@ -33,3 +33,12 @@ def test_get_sites():
                             "'LegacyMeasurementSiteID': 30027234.0, 'road': 'M4'}"
 
 
+def test_get_link_sites():
+    sites = get_link_sites('sites_enriched_roads.csv', '123013701')
+    assert type(sites) == type(dict())
+    assert len(sites) == 12
+    assert str(sites[86]) == "{'Id': 86, 'Name': 'MIDAS site at M1/3966A priority 1 on link 123013701; " \
+                          "GPS Ref: 448119;338259; Northbound', 'Description': 'M1/3966A', " \
+                          "'Longitude': -1.28544465160147, 'Latitude': 52.9395949413968, " \
+                          "'Status': 'Active', 'MeasurementSiteName': 'M1 northbound between J25 and J26', " \
+                          "'MeasurementSiteID': 86.0, 'LegacyMeasurementSiteID': 30031844.0, 'road': 'M1'}"
