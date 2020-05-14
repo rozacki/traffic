@@ -1,6 +1,8 @@
 import os
-from common import load_sites_info, configs_base_folder
+from maos.sites import load_sites_info
+from common import configs_base_folder
 import pandas as pd
+
 
 def join_sites_and_conversions():
     '''
