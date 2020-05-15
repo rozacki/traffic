@@ -1,4 +1,5 @@
 import os
+from maos import logger
 from maos.sites import load_sites_info
 from common import configs_base_folder
 import pandas as pd
@@ -34,11 +35,63 @@ def get_road_from_description(description):
     :return:
     '''
     if not description:
-        return
+        return  None
     segments = str(description).split('/')
     if len(segments) != 2:
-        return
+        return None
     return segments[0]
+
+
+def _get_legacy_kv_from_name(site_id, name):
+    '''
+    todo
+    Name column can be different format for example
+    'MIDAS site at M1/4174A, 062/7/123/211 on M1 northbound within J28 on road M1
+    at location 53.099674303682000,-1.321691031373000'
+    :param name:
+    :return:
+    '''
+    return dict()
+
+
+def get_columns_from_name(site_id, name):
+    '''
+    return key-value from name column
+    Example:
+    MIDAS site at M1/3942A priority 1 on link 123013701; GPS Ref: 447146;336274; Northbound
+    will return
+    site_type: 'MIDAS'
+    link: 123013701
+    gps_x: 447146
+    gps_y: 336274
+    :param name:
+    :return:
+    '''
+    try:
+        if not name:
+            return None
+        segments = name.split(';')
+        kv = dict()
+        split_segments = segments[0].split(' ')
+        kv['site_type'] = split_segments[0]
+        kv['link'] = split_segments[-1]
+        gps_x_kv = segments[1].split(':')
+        kv['gps_x'] = int(gps_x_kv[1])
+        kv['gps_y'] = int(segments[2])
+        kv['direction'] = segments[-1].strip()
+        return kv
+    except Exception as ex:
+        logger.info(f'name format exception, site id {site_id} -- {name}')
+        return dict()
+
+
+def _enrich(row):
+    road_name = get_road_from_description(row['Description'])
+    row['road'] = road_name
+    new_columns = get_columns_from_name(row['Id'], row['Name'])
+    for k, v in new_columns.items():
+        row[k] = v
+    return row
 
 
 def add_road_name_column(sites_csv, output_file_name='sites_enriched_roads.csv'):
@@ -49,10 +102,10 @@ def add_road_name_column(sites_csv, output_file_name='sites_enriched_roads.csv')
     :return:
     '''
     sites = pd.read_csv(os.path.join(configs_base_folder, sites_csv))
-    sites['road'] = sites.apply(lambda row: get_road_from_description(row['Description']), axis=1)
+    sites = sites.apply(_enrich, axis=1)
     sites.to_csv(os.path.join(configs_base_folder, output_file_name), index=False)
     return sites
 
 
-#add_road_name_column('sites_enriched.csv')
+#add_road_name_column(sites_csv='sites_enriched_roads.csv', output_file_name='sites_enriched_roads_2.csv')
 #join_sites_and_conversions()

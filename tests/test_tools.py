@@ -18,9 +18,20 @@ def test_add_road_name_column():
     df = add_road_name_column(test_enriched_file, output_file_name='test_sites_enriched_roads.csv')
     df.info()
     assert len(df) == 17851
-    assert len(df.columns) == 10
-    assert df.shape == (17851, 10)
-    assert df.size == 178510
-    assert list(df.columns) == ['Id', 'Name', 'Description', 'Longitude', 'Latitude', 'Status',
+    assert len(df.columns) == 15
+    assert df.shape == (17851, 15)
+    assert df.size == 267765
+    assert list(df.columns).sort() == ['Id', 'Name', 'Description', 'Longitude', 'Latitude', 'Status',
                                                  'MeasurementSiteName', 'MeasurementSiteID', 'LegacyMeasurementSiteID',
-                                                 'road']
+                                                 'direction' ,'gps_x', 'gps_y', 'link', 'road', 'site_type'].sort()
+
+
+def test_get_kv_from_name():
+    name = 'MIDAS site at M1/3942A priority 1 on link 123013701; GPS Ref: 447146;336274; Northbound'
+    kv = get_columns_from_name(1, name)
+    assert len(kv) == 5
+    assert kv['site_type'] == 'MIDAS'
+    assert kv['link'] == '123013701'
+    assert kv['gps_x'] == 447146
+    assert kv['gps_y'] ==  336274
+    assert kv['direction'] == 'Northbound'
