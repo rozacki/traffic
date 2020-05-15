@@ -147,6 +147,26 @@
           {{
             "type": "long",
             "name": "Total Volume"
+          }},
+          {{
+          	"type" : "long",
+            "name" : "gps_x"
+          }},
+          {{
+          	"type" : "long",
+            "name" : "gps_y"
+          }},
+          {{
+          "type" : "long",
+          "name" : "link"
+          }},
+          {{
+          	"type" : "string",
+          	"name" : "direction"
+          }},
+          {{
+          	"type" : "string",
+          	"name" : "site_type"
           }}
         ]
       }}
