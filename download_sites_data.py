@@ -122,7 +122,7 @@ if __name__ == '__main__':
     parser.add_argument('--site', type=int, default=1, help='Seek and start downloading from this site')
     parser.add_argument('--sites-count', type=int, default=1, help='How many sites try to download. '
                                                                      'Note some data may no be available for site')
-    parser.add_argument('--sites-file', type=str, default='sites_enriched_roads.csv')
+    parser.add_argument('--sites-catalog', type=str, default='sites_catalog.csv')
     parser.add_argument('-s', '--startdate', help="The Start Date - format YYYY-MM-DD", type=valid_date)
     parser.add_argument('-e', '--enddate', help="The Stop Date - format YYYY-MM-DD", type=valid_date,
                         default=datetime.now().strftime('%Y-%m-%d'))

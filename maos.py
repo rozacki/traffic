@@ -23,10 +23,29 @@ class MaosArgsParser:
         args = parser.parse_args(sys.argv[2:3])
         download_entity_command = 'download_' + args.entity
         if not hasattr(self, download_entity_command):
-            print('unrecognized entity')
+            print(f'not supported entity "{args.entity}"')
             parser.print_help()
             exit(1)
         getattr(self, download_entity_command)()
+
+
+    @staticmethod
+    def _prepare_parser():
+        parser = ArgumentParser(description='download sites for period of time')
+        parser.add_argument('--sites-catalog', type=str, default='sites_catalog.csv')
+        parser.add_argument('-s', '--startdate', help='The Start Date - format YYYY-MM-DD', type=valid_date,
+                            required=True)
+        parser.add_argument('-e', '--enddate', help='The Stop Date - format YYYY-MM-DD', type=valid_date,
+                            required=True)
+        return parser
+
+    @staticmethod
+    def download_road():
+        parser = MaosArgsParser._prepare_parser()
+        parser.add_argument('--road', type=str, required=True,
+                            help='If entity is road, Seek and downloading all sites on the road related')
+        args = parser.parse_args(sys.argv[3:])
+        pipeline.download_road_reports(args.road, args.startdate, args.enddate)
 
     @staticmethod
     def download_site():
@@ -36,12 +55,11 @@ class MaosArgsParser:
         parser.add_argument('--sites-count', type=int, default=1, help='How many sites try to download. '
                                                                        'Note some data may no be available for site',
                             required=True)
-        parser.add_argument('--sites-file', type=str, default='sites_enriched_roads.csv')
+        parser.add_argument('--sites-catalog', type=str, default='sites_catalog.csv')
         parser.add_argument('-s', '--startdate', help='The Start Date - format YYYY-MM-DD', type=valid_date,
                             required=True)
         parser.add_argument('-e', '--enddate', help='The Stop Date - format YYYY-MM-DD', type=valid_date,
                             required=True)
-
 
         args = parser.parse_args(sys.argv[3:])
         pipeline.download_sites_reports(args.site, args.sites_count, args.startdate, args.enddate)
@@ -49,7 +67,7 @@ class MaosArgsParser:
     @staticmethod
     def download_link():
         parser = ArgumentParser(description='download link for period of time')
-        parser.add_argument('-l', '--link', help='Link id, all related sites will be downloaded')
+        parser.add_argument('-l', '--link', help='Link id, all related sites will be downloaded', required=True)
         parser.add_argument('-s', '--startdate', help='The Start Date - format YYYY-MM-DD', type=valid_date,
                             required=True)
         parser.add_argument('-e', '--enddate', help='The Stop Date - format YYYY-MM-DD', type=valid_date,
