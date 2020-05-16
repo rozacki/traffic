@@ -94,7 +94,7 @@ def _enrich(row):
     return row
 
 
-def add_road_name_column(sites_csv, output_file_name='sites_enriched_roads.csv'):
+def add_road_name_column(sites_csv, output_file_name='sites_catalog.csv'):
     '''
     Add road name column to sites enriched and stores as csv
     :param sites_csv:
@@ -107,5 +107,5 @@ def add_road_name_column(sites_csv, output_file_name='sites_enriched_roads.csv')
     return sites
 
 
-#add_road_name_column(sites_csv='sites_enriched_roads.csv', output_file_name='sites_enriched_roads_2.csv')
+#add_road_name_column(sites_csv='sites_catalog.csv', output_file_name='sites_enriched_roads_2.csv')
 #join_sites_and_conversions()

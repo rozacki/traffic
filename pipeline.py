@@ -4,7 +4,7 @@ import threading
 import shutil
 import tempfile
 
-from maos.sites import get_sites, get_link_sites
+from maos.sites import get_sites, get_link_sites, get_road_sites
 from download_sites_data import download_and_store_reports
 from maos import logger
 
@@ -128,12 +128,17 @@ def _download_reports_async(sites, startdate, enddate, download_folder='data/sit
         thread.join()
 
 
+def download_road_reports(road, startdate, enddate):
+    sites = get_road_sites('sites_catalog.csv', road)
+    _download_reports_async(sites, startdate, enddate)
+
+
 def download_sites_reports(site, sites_count, startdate, enddate):
-    sites = get_sites('sites_enriched_roads.csv', site, sites_count)
+    sites = get_sites('sites_catalog.csv', site, sites_count)
     _download_reports_async(sites, startdate, enddate)
 
 
 def download_link_reports(link, startdate, enddate):
-    sites = get_link_sites('sites_enriched_roads.csv', link)
+    sites = get_link_sites('sites_catalog.csv', link)
     _download_reports_async(sites, startdate, enddate)
 

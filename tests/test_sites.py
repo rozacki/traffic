@@ -5,7 +5,7 @@ logger = get_logger()
 
 
 def test_get_road_sites():
-    sites = get_road_sites('sites_enriched_roads.csv', 'M4')
+    sites = get_road_sites('sites_catalog.csv', 'M4')
     assert len(sites) == 848
     assert str(sites[1]) == "{'Id': 1, 'Name': 'MIDAS site at M4/2295A2 priority 1 on link 105009001;" \
                             " GPS Ref: 502816;178156; Westbound', " \
