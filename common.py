@@ -30,4 +30,3 @@ def fromisoformat(str):
     except ValueError:
         msg = f"{str} is not valid ISO format"
         raise ValueError(msg)
-

@@ -45,7 +45,7 @@ def _update_site_daily_report(site_daily_report, site_dict):
     :return:
     '''
     for quarter_report in site_daily_report:
-        t = time.fromisoformat(quarter_report['Time Period Ending'])
+        t = fromisoformat(quarter_report['Time Period Ending'])
         d = fromisoformat(quarter_report['Report Date'])
         d = d.replace(hour=t.hour, minute=t.minute)
         site_dict['Report Date Time'] = d.isoformat()

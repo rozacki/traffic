@@ -6,6 +6,7 @@ verify_ssl = true
 [dev-packages]
 pandas = "*"
 plotly = "*"
+v = {editable = true,version = "*"}
 
 [packages]
 requests = "*"
