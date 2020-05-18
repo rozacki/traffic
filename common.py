@@ -3,6 +3,7 @@ import logging.config
 from datetime import datetime
 import argparse
 import os
+import dateutil.parser
 
 
 configs_base_folder='configs'
@@ -21,4 +22,12 @@ def valid_date(s):
     except ValueError:
         msg = "Not a valid date: '{0}'.".format(s)
         raise argparse.ArgumentTypeError(msg)
+
+
+def fromisoformat(str):
+    try:
+        return dateutil.parser.parse(str)
+    except ValueError:
+        msg = f"{str} is not valid ISO format"
+        raise ValueError(msg)
 

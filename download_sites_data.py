@@ -4,7 +4,7 @@ import argparse
 from datetime import datetime, timedelta, time
 import os
 
-from common import valid_date, base_site_data_folder, base_road_data_folder
+from common import valid_date, base_site_data_folder, base_road_data_folder, fromisoformat
 from maos.sites import get_road_sites, get_sites
 from maos import logger
 
@@ -46,7 +46,7 @@ def _update_site_daily_report(site_daily_report, site_dict):
     '''
     for quarter_report in site_daily_report:
         t = time.fromisoformat(quarter_report['Time Period Ending'])
-        d = datetime.fromisoformat(quarter_report['Report Date'])
+        d = fromisoformat(quarter_report['Report Date'])
         d = d.replace(hour=t.hour, minute=t.minute)
         site_dict['Report Date Time'] = d.isoformat()
         quarter_report.update(site_dict)
