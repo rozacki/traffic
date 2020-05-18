@@ -15,7 +15,7 @@ def test_join_sites_and_conversions():
 
 
 def test_add_road_name_column():
-    df = add_road_name_column(test_enriched_file, output_file_name='sites_catalog.csv')
+    df = add_road_name_column(test_enriched_file, output_file_name='test_sites_catalog.csv')
     df.info()
     assert len(df) == 17851
     assert len(df.columns) == 15
