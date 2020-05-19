@@ -5,7 +5,7 @@ logger = get_logger()
 
 
 def test_get_road_sites():
-    sites = get_road_sites('sites_catalog.csv', 'M1')
+    sites = get_road_sites('sites_catalog.csv', 'M4')
     assert len(sites) == 848
     assert str(sites[1]) == "{'Description': 'M4/2295A2', 'Id': 1, 'Latitude': 51.49301153671121, " \
                             "'LegacyMeasurementSiteID': 30027234.0, 'Longitude': -0.520379557723297, " \
