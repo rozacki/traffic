@@ -20,10 +20,10 @@ def join_sites_and_conversions(sites_file='sites.json', conversion_file='Convers
     sites.set_index('Id')
 
     conversion_table = pd.read_csv(os.path.join(configs_base_folder, conversion_file))
+    conversion_table.drop_duplicates(subset='MeasurementSiteID', keep=False, inplace=True)
     conversion_table['MeasurementSiteID'] = conversion_table['MeasurementSiteID'].astype(int)
     conversion_table.set_index('MeasurementSiteID')
     joined = pd.merge(sites, conversion_table, how='left', left_on='Id', right_on='MeasurementSiteID')
-    #joined = sites.join(conversion_table, how='left')
     joined.to_csv(os.path.join(configs_base_folder, enriched_file), index=False)
     return joined
 
@@ -107,5 +107,5 @@ def add_road_name_column(sites_csv, output_file_name='sites_catalog.csv'):
     return sites
 
 
-#add_road_name_column(sites_csv='sites_catalog.csv', output_file_name='sites_enriched_roads_2.csv')
 #join_sites_and_conversions()
+#add_road_name_column(sites_csv='sites_enriched.csv', output_file_name='sites_catalog.csv')
