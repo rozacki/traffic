@@ -1,7 +1,7 @@
 import os
 from maos import logger
 from maos.sites import load_sites_info
-from common import configs_base_folder
+from maos.common import configs_base_folder
 import pandas as pd
 
 

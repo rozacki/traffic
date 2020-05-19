@@ -1,4 +1,4 @@
-from tools import *
+from maos.tools import *
 
 test_enriched_file = 'test_enriched_file.csv'
 

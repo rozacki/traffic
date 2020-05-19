@@ -4,9 +4,8 @@ import threading
 import shutil
 import tempfile
 
-from maos.sites import get_sites, get_link_sites, get_road_sites
+from sites import get_sites, get_link_sites, get_road_sites
 from download_sites_data import download_and_store_reports
-from maos import logger
 
 '''
 How many threads can be run in parallel
