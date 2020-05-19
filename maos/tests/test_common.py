@@ -1,6 +1,4 @@
-from common import *
-
-
+from maos.common import *
 
 def test_datetime_fromisoformat():
     d = fromisoformat("2018-01-01T00:14:59")

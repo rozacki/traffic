@@ -3,7 +3,7 @@ import os
 
 import pandas as pd
 
-from common import configs_base_folder
+from maos.common import configs_base_folder
 
 
 def load_sites_info(file_name='sites.json'):

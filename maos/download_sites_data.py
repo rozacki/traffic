@@ -5,8 +5,7 @@ from datetime import datetime, timedelta, time
 import os
 
 from common import valid_date, base_site_data_folder, base_road_data_folder, fromisoformat
-from maos.sites import get_road_sites, get_sites
-from maos import logger
+from sites import get_road_sites, get_sites
 
 
 endpoint = 'http://webtris.highwaysengland.co.uk/api/v1.0/reports/daily?sites={site_id}' \
