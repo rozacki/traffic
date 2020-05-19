@@ -12,7 +12,7 @@ base_road_data_folder = 'data/roads'
 
 
 def get_logger(name='main'):
-    logging.config.fileConfig(os.path.join(configs_base_folder, 'logging.conf'))
+    #logging.config.fileConfig(os.path.join(configs_base_folder, 'logging.conf'))
     return logging.getLogger(name)
 
 

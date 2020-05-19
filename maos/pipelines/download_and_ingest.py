@@ -1,5 +1,6 @@
 import logging
 
+
 def setup_environment():
     import sys, os
     # hardcoded segments
@@ -7,15 +8,15 @@ def setup_environment():
     # remove first empty segment
     segments = cwd.split('/')[1:]
     # join back first 5 segments as this is where repo starts
-    sys_path = os.path.join('/', *segments[:5])
+    sys_path = os.path.join('/', *segments[:6])
     # extract 4th segment as global variable
-    environment = segments[3:4][0]
+    environment = segments[4:5][0]
     sys.path.insert(0, sys_path)
     logging.info('new sys path is {}'.format(sys_path))
-    ofgem_libs = [key for key in sys.modules.keys() if 'ofgem' in key]
+    ofgem_libs = [key for key in sys.modules.keys() if 'maos' in key]
     for i in ofgem_libs:
         del (sys.modules[i])
-    logging.info('removed `ofgem` libraries')
+    logging.info('removed `maos` libraries')
     return environment
 
 environment = setup_environment()
