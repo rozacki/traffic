@@ -4,8 +4,10 @@ import threading
 import shutil
 import tempfile
 
-from sites import get_sites, get_link_sites, get_road_sites
-from download_sites_data import download_and_store_reports
+from maos.common import logger
+from maos.sites import get_sites, get_link_sites, get_road_sites
+from maos.download_sites_data import download_and_store_reports
+
 
 '''
 How many threads can be run in parallel
@@ -92,8 +94,7 @@ def _wrap_download_and_store_reports(site, startdate, enddate):
     logger.info(f'finished thread {current_thread.getName()}')
 
 
-def _download_reports_async(sites, startdate, enddate, download_folder='data/sites',
-                            maximum_folder_size=584000):
+def _download_reports_async(sites, startdate, enddate, download_folder='data/sites', maximum_folder_size=584000):
     '''
     downloads data into folder, checks if it does not overcome maximum limit
     :param sites:
@@ -140,4 +141,3 @@ def download_sites_reports(site, sites_count, startdate, enddate):
 def download_link_reports(link, startdate, enddate):
     sites = get_link_sites('sites_catalog.csv', link)
     _download_reports_async(sites, startdate, enddate)
-

@@ -1,11 +1,9 @@
 import argparse
 
 from pydruid.db import connect
-from common import get_logger
+from maos.common import logger
 from maos.sites import get_sites_info
 from geojson import Point, Feature, FeatureCollection, dumps
-
-logger = get_logger()
 
 
 def _druid_get_connection():
