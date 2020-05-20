@@ -5,10 +5,13 @@ import argparse
 import dateutil.parser
 
 
-configs_base_folder = 'configs'
-base_site_data_folder = 'data/sites'
-base_road_data_folder = 'data/roads'
+# configs_base_folder = 'configs'
+# base_site_data_folder = 'data/sites'
+# base_road_data_folder = 'data/roads'
 
+configs_base_folder = None
+base_site_data_folder = None
+base_road_data_folder = None
 
 def get_logger(name='main'):
     #logging.config.fileConfig(os.path.join(configs_base_folder, 'logging.conf'))
