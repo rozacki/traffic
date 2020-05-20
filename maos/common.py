@@ -28,6 +28,10 @@ def set_globals(new_configs_base_folder, new_base_site_data_folder):
     logger.info(f'configs_base_folder={configs_base_folder}')
     logger.info(f'base_site_data_folder={base_site_data_folder}')
 
+
+def get_configs_base_folder():
+    return configs_base_folder
+
 def valid_date(s):
     try:
         return datetime.strptime(s, "%Y-%m-%d")
