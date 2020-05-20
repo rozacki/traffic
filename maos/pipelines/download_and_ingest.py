@@ -39,7 +39,7 @@ from maos.common import remove_non_alnum
 
 args = {'owner': 'chris'}
 dag = DAG(dag_id='download_and_ingest', description='download and ingest highways england daily report',
-          start_date=days_ago(-1), default_args=args)
+          start_date=days_ago(-1), default_args=args, schedule_interval=None)
 
 road = variable.get_variable('road name')
 startdate = variable.get_variable('start date')
@@ -49,7 +49,7 @@ overwrite = variable.get_variable('overwrite')
 
 download = PythonOperator(dag=dag, task_id=remove_non_alnum(f'download_road_{road}_({startdate}-{enddate})'),
                           python_callable=download_road_reports,
-                          op_kwargs={'road':road, 'startdate': startdate, 'enddate': enddate})
+                          op_kwargs={'road': road, 'startdate': startdate, 'enddate': enddate})
 
 ingest = PythonOperator(dag=dag, task_id=remove_non_alnum(f'ingest_road_{road}_({startdate}-{enddate}) to {datasource}')
                         ,python_callable=ingest,
