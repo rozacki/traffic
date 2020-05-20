@@ -26,8 +26,7 @@ def setup_environment():
     return environment
 
 
-environment = setup_environment()
-logging.info(f'new environment is {environment}')
+new_environment = setup_environment()
 
 from airflow import DAG
 from airflow.utils.dates import days_ago
@@ -35,7 +34,7 @@ from airflow.operators.python_operator import PythonOperator
 from airflow.models import variable
 
 from maos.pipeline import download_road_reports, ingest
-from maos.common import remove_non_alnum
+from maos.common import remove_non_alnum, set_globals
 
 args = {'owner': 'chris'}
 dag = DAG(dag_id='download_and_ingest', description='download and ingest highways england daily report',
@@ -46,6 +45,9 @@ startdate = variable.get_variable('start date')
 enddate = variable.get_variable('end date')
 datasource = variable.get_variable('data source')
 overwrite = variable.get_variable('overwrite')
+sites_catalog_folder = variable.get_variable('sites catalog path')
+
+set_globals(new_environment, sites_catalog_folder)
 
 download = PythonOperator(python_callable=download_road_reports,
                           dag=dag,
