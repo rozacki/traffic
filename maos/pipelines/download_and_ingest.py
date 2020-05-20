@@ -45,14 +45,16 @@ startdate = variable.get_variable('start date')
 enddate = variable.get_variable('end date')
 datasource = variable.get_variable('data source')
 overwrite = variable.get_variable('overwrite')
-sites_catalog_folder = variable.get_variable('sites catalog path')
+sites_catalog_folder = variable.get_variable('sites catalog folder')
+sites_data_folder = variable.get_variable('site data catalog folder')
 
-set_globals(new_environment, sites_catalog_folder)
+set_globals(sites_catalog_folder, sites_data_folder)
 
 download = PythonOperator(python_callable=download_road_reports,
                           dag=dag,
                           task_id=remove_non_alnum(f'download_road_{road}_({startdate}-{enddate})'),
-                          op_kwargs={'road': road, 'startdate': startdate, 'enddate': enddate})
+                          op_kwargs={'sites_catalog_folder': sites_catalog_folder
+                          ,'base_site_data_folder': sites_data_folder,'road': road, 'startdate': startdate, 'enddate': enddate})
 
 ingest = PythonOperator(python_callable=ingest,
                         dag=dag,
