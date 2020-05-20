@@ -37,7 +37,7 @@ from airflow.models import variable
 from maos.pipeline import download_road_reports, ingest
 from maos.common import remove_non_alnum
 
-args = {'owner': 'chris'}
+args = {'owner': 'airflow'}
 dag = DAG(dag_id='download_and_ingest', description='download and ingest highways england daily report',
           start_date=days_ago(-1), default_args=args, schedule_interval=None)
 
