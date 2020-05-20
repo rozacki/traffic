@@ -5,15 +5,9 @@ import argparse
 import dateutil.parser
 
 
-configs_base_folder='configs'
+configs_base_folder = 'configs'
 base_site_data_folder = 'data/sites'
 base_road_data_folder = 'data/roads'
-
-
-def set_globals(new_configs_base_folder, new_base_site_data_folder):
-    global configs_base_folder, base_site_data_folder
-    configs_base_folder = new_configs_base_folder
-    base_site_data_folder = new_base_site_data_folder
 
 
 def get_logger(name='main'):
@@ -23,6 +17,13 @@ def get_logger(name='main'):
 
 logger = get_logger()
 
+
+def set_globals(new_configs_base_folder, new_base_site_data_folder):
+    global configs_base_folder, base_site_data_folder
+    configs_base_folder = new_configs_base_folder
+    base_site_data_folder = new_base_site_data_folder
+    logger.info(f'configs_base_folder={configs_base_folder}')
+    logger.info(f'base_site_data_folder={base_site_data_folder}')
 
 def valid_date(s):
     try:
