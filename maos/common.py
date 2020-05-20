@@ -33,3 +33,7 @@ def fromisoformat(str):
     except ValueError:
         msg = f"{str} is not valid ISO format"
         raise ValueError(msg)
+
+
+def remove_non_alnum(s):
+    return '_'.join(filter(str.isalnum, s))
