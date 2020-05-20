@@ -47,12 +47,14 @@ enddate = variable.get_variable('end date')
 datasource = variable.get_variable('data source')
 overwrite = variable.get_variable('overwrite')
 
-download = PythonOperator(dag=dag, task_id=remove_non_alnum(f'download_road_{road}_({startdate}-{enddate})'),
-                          python_callable=download_road_reports,
+download = PythonOperator(python_callable=download_road_reports,
+                          dag=dag,
+                          task_id=remove_non_alnum(f'download_road_{road}_({startdate}-{enddate})'),
                           op_kwargs={'road': road, 'startdate': startdate, 'enddate': enddate})
 
-ingest = PythonOperator(dag=dag, task_id=remove_non_alnum(f'ingest_road_{road}_({startdate}-{enddate}) to {datasource}')
-                        ,python_callable=ingest,
+ingest = PythonOperator(python_callable=ingest,
+                        dag=dag,
+                        task_id=remove_non_alnum(f'ingest_road_{road}_({startdate}-{enddate}) to {datasource}'),
                         op_kwargs={'datasource': datasource, 'source_folder': 'data/sites', 'overwrite': overwrite})
 
 download >> ingest
