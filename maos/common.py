@@ -36,4 +36,4 @@ def fromisoformat(str):
 
 
 def remove_non_alnum(s):
-    return '_'.join(filter(str.isalnum, s))
+    return "".join([ c if c.isalnum() else "_" for c in s ])
