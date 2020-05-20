@@ -2,7 +2,6 @@ import logging
 import logging.config
 from datetime import datetime
 import argparse
-import os
 import dateutil.parser
 
 
