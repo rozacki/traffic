@@ -3,7 +3,7 @@ import os
 
 import pandas as pd
 
-from maos.common import configs_base_folder
+from maos.common import configs_base_folder, logger
 
 
 def load_sites_info(file_name='sites.json'):
@@ -42,6 +42,7 @@ def get_road_sites(sites_file, road_name):
     :return: dictionary where key is Id
     '''
     sites = pd.read_csv(os.path.join(configs_base_folder, sites_file))
+    logger.info(f'{sites_file} open')
     sites.set_index('road', drop=False, inplace=True)
     is_road_name = sites['road'] == road_name
     sites_ret = sites[is_road_name]
