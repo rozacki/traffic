@@ -131,6 +131,7 @@ def _download_reports_async(sites, startdate, enddate, download_folder='data/sit
 
 def download_road_reports(sites_catalog_folder, base_site_data_folder, road, startdate, enddate):
     set_globals(sites_catalog_folder, base_site_data_folder)
+    logger.info(f'base_site_data_folder={base_site_data_folder}')
     sites = get_road_sites('sites_catalog.csv', road)
     _download_reports_async(sites, startdate, enddate)
 
