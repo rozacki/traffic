@@ -46,7 +46,7 @@ def run_process(cmd):
         return False
 
 
-def ingest(datasource_name, source_folder, append_to_existing, ingestion_template_file_name='ingestion_template.json',
+def ingest(datasource_name, append_to_existing, source_folder, ingestion_template_file_name='ingestion_template.json',
            url='http://localhost:8081'):
     '''
     Ingest data from the folder
@@ -126,6 +126,7 @@ def _download_reports_async(sites, startdate, enddate, download_folder='data/sit
     for key, thread in enumerate(threads):
         logger.info(f'wait for {thread.getName()} thread to finish')
         thread.join()
+    return download_folder
 
 
 def download_road_reports(road, startdate, enddate):
