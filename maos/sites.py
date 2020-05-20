@@ -41,6 +41,7 @@ def get_road_sites(sites_file, road_name):
     :param road_name:
     :return: dictionary where key is Id
     '''
+    logger.info(f'configs_base_folder={configs_base_folder}')
     sites = pd.read_csv(os.path.join(configs_base_folder, sites_file))
     logger.info(f'{sites_file} open')
     sites.set_index('road', drop=False, inplace=True)
