@@ -35,6 +35,7 @@ from airflow.operators.python_operator import PythonOperator
 from airflow.models import variable
 
 from maos.pipeline import download_road_reports, ingest
+from maos.common import remove_non_alnum
 
 args = {'owner': 'chris'}
 dag = DAG(dag_id='download_and_ingest', description='download and ingest highways england daily report',
@@ -46,12 +47,12 @@ enddate = variable.get_variable('end date')
 datasource = variable.get_variable('data source')
 overwrite = variable.get_variable('overwrite')
 
-download = PythonOperator(dag=dag, task_id=f'download_road_{road} ({startdate};{enddate})',
+download = PythonOperator(dag=dag, task_id=remove_non_alnum(f'download_road_{road}_({startdate}-{enddate})'),
                           python_callable=download_road_reports,
-                          op_kwargs={'road':road, 'startdate':startdate, 'enddate': enddate})
+                          op_kwargs={'road':road, 'startdate': startdate, 'enddate': enddate})
 
-ingest = PythonOperator(dag=dag, task_id=f'ingest_road_{road} ({startdate};{enddate}) to {datasource}',
-                        python_callable=ingest,
+ingest = PythonOperator(dag=dag, task_id=remove_non_alnum(f'ingest_road_{road}_({startdate}-{enddate}) to {datasource}')
+                        ,python_callable=ingest,
                         op_kwargs={'datasource': datasource, 'source_folder': 'data/sites', 'overwrite': overwrite})
 
 download >> ingest
