@@ -44,7 +44,7 @@ road = variable.get_variable('road name')
 startdate = valid_date(variable.get_variable('start date'))
 enddate = valid_date(variable.get_variable('end date'))
 datasource = variable.get_variable('data source')
-append_to_existing = variable.get_variable('append_to_existing')
+append = variable.get_variable('append to existing')
 sites_catalog_folder = variable.get_variable('sites catalog folder')
 sites_data_folder = variable.get_variable('site data catalog folder')
 scripts_folder = variable.get_variable('scripts folder')
@@ -61,6 +61,6 @@ ingest = PythonOperator(python_callable=ingest,
                         dag=dag,
                         task_id=remove_non_alnum(f'ingest_road_{road}_({startdate}-{enddate}) to {datasource}'),
                         op_kwargs={'datasource': datasource, 'source_folder': sites_data_folder,
-                                   'overwrite': append_to_existing})
+                                   'append': append})
 
 download >> ingest
