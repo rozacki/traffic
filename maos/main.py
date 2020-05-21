@@ -80,10 +80,10 @@ class MaosArgsParser:
         parser = ArgumentParser(description='ingest reports to druid')
         parser.add_argument('--datasource', help='data source name', required=True)
         parser.add_argument('--source-folder', help='data source name', required=True)
-        parser.add_argument('--append-to-existing', help='overwrite existing data source', action='store_true')
+        parser.add_argument('--append', help='overwrite existing data source', action='store_true')
 
         args = parser.parse_args(sys.argv[2:])
-        pipeline.ingest(args.datasource, args.source_folder, args.overwrite)
+        pipeline.ingest(args.datasource, args.source_folder, args.append)
 
 
 if __name__ == '__main__':
