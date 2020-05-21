@@ -4,7 +4,7 @@ import threading
 import shutil
 import tempfile
 
-from maos.common import logger, get_config_folder
+from maos.common import logger, get_config_folder, get_scripts_folder
 from maos.sites import get_sites, get_link_sites, get_road_sites
 from maos.download_sites_data import download_and_store_reports
 
@@ -16,7 +16,6 @@ cpus = 4
 threads_per_cpu = 5
 max_threads = cpus*threads_per_cpu
 max_threads_semaphore = threading.Semaphore(max_threads)
-path_to_post_index_path_script = '/root/druid/apache-druid-0.17.0/bin/post-index-task'
 
 
 def _get_thread_name(site_id, startdate, enddate):
@@ -69,7 +68,7 @@ def ingest(datasource, overwrite, source_folder, ingestion_template_file_name='i
         tmp.write(task_string)
         tmp.flush()
         logger.info(f'task definition stored in {tmp.name}')
-        cmd = [path_to_post_index_path_script, '--file', tmp.name, '--url', url]
+        cmd = [os.path.join(get_scripts_folder(), 'post-index-task'), '--file', tmp.name, '--url', url]
         logger.info(f'{cmd}')
         run_process(cmd)
 

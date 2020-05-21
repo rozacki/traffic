@@ -47,8 +47,9 @@ datasource = variable.get_variable('data source')
 overwrite = variable.get_variable('overwrite')
 sites_catalog_folder = variable.get_variable('sites catalog folder')
 sites_data_folder = variable.get_variable('site data catalog folder')
+scripts_folder = variable.get_variable('scripts folder')
 
-set_globals(sites_catalog_folder, sites_data_folder)
+set_globals(sites_catalog_folder, sites_data_folder, scripts_folder)
 
 download = PythonOperator(python_callable=download_road_reports,
                           dag=dag,
