@@ -34,15 +34,15 @@ from airflow.operators.python_operator import PythonOperator
 from airflow.models import variable
 
 from maos.pipeline import download_road_reports, ingest
-from maos.common import remove_non_alnum, set_globals
+from maos.common import remove_non_alnum, set_globals, valid_date
 
 args = {'owner': 'chris'}
 dag = DAG(dag_id='download_and_ingest', description='download and ingest highways england daily report',
           start_date=days_ago(1), default_args=args, schedule_interval=None)
 
 road = variable.get_variable('road name')
-startdate = variable.get_variable('start date')
-enddate = variable.get_variable('end date')
+startdate = valid_date(variable.get_variable('start date'))
+enddate = valid_date(variable.get_variable('end date'))
 datasource = variable.get_variable('data source')
 overwrite = variable.get_variable('overwrite')
 sites_catalog_folder = variable.get_variable('sites catalog folder')
