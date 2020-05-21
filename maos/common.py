@@ -20,12 +20,13 @@ logger = get_logger()
 
 
 def set_globals(new_config_folder, new_site_data_folder, new_scripts_folder):
-    global config_folder, sites_data_folder
+    global config_folder, sites_data_folder, scripts_folder
     config_folder = new_config_folder
     sites_data_folder = new_site_data_folder
     scripts_folder = new_scripts_folder
     logger.info(f'configs_base_folder={config_folder}')
-    logger.info(f'base_site_data_folder={sites_data_folder}')
+    logger.info(f'site_data_folder={sites_data_folder}')
+    logger.info(f'scripts_folder={scripts_folder}')
 
 
 def get_config_folder():
