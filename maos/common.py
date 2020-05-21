@@ -63,3 +63,7 @@ def fromisoformat(str):
 
 def remove_non_alnum(s):
     return "".join([ c if c.isalnum() else "_" for c in s ])
+
+
+def to_bool(s):
+    return True if s.lower() in ('yes', '1') else False
