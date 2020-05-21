@@ -4,7 +4,7 @@ import threading
 import shutil
 import tempfile
 
-from maos.common import logger, set_globals
+from maos.common import logger, get_config_folder
 from maos.sites import get_sites, get_link_sites, get_road_sites
 from maos.download_sites_data import download_and_store_reports
 
@@ -57,7 +57,7 @@ def ingest(datasource, overwrite, source_folder, ingestion_template_file_name='i
     :param url:
     :return:
     '''
-    template = os.path.join('ingestions', ingestion_template_file_name)
+    template = os.path.join(get_config_folder(), ingestion_template_file_name)
     logger.info(f'used {template} template to post the task')
     with open(template) as f:
         template = f.read()
