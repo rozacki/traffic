@@ -46,11 +46,11 @@ def run_process(cmd):
         return False
 
 
-def ingest(datasource_name, append_to_existing, source_folder, ingestion_template_file_name='ingestion_template.json',
+def ingest(datasource, append_to_existing, source_folder, ingestion_template_file_name='ingestion_template.json',
            url='http://localhost:8081'):
     '''
     Ingest data from the folder
-    :param datasource_name:
+    :param datasource:
     :param source_folder:
     :param append_to_existing:
     :param ingestion_template_file_name:
@@ -62,7 +62,7 @@ def ingest(datasource_name, append_to_existing, source_folder, ingestion_templat
     with open(template) as f:
         template = f.read()
     append_to_existing = 'true' if append_to_existing else "false"
-    task_string = template.format(datasource_name=datasource_name, source_folder=source_folder,
+    task_string = template.format(datasource_name=datasource, source_folder=source_folder,
                                   append_to_existing=append_to_existing)
     logger.info(task_string)
     with tempfile.NamedTemporaryFile(mode='w') as tmp:
@@ -129,7 +129,7 @@ def _download_reports_async(sites, startdate, enddate, download_folder='data/sit
     return download_folder
 
 
-def download_road_reports(sites_catalog_folder, base_site_data_folder, road, startdate, enddate):
+def download_road_reports(road, startdate, enddate):
     sites = get_road_sites('sites_catalog.csv', road)
     _download_reports_async(sites, startdate, enddate)
 

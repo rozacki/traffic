@@ -60,6 +60,7 @@ download = PythonOperator(python_callable=download_road_reports,
 ingest = PythonOperator(python_callable=ingest,
                         dag=dag,
                         task_id=remove_non_alnum(f'ingest_road_{road}_({startdate}-{enddate}) to {datasource}'),
-                        op_kwargs={'datasource': datasource, 'source_folder': 'data/sites', 'overwrite': overwrite})
+                        op_kwargs={'datasource': datasource, 'source_folder': sites_data_folder,
+                                   'overwrite': overwrite})
 
 download >> ingest
