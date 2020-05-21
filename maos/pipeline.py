@@ -46,13 +46,13 @@ def run_process(cmd):
         return False
 
 
-def ingest(datasource, append_to_existing, source_folder, ingestion_template_file_name='ingestion_template.json',
+def ingest(datasource, overwrite, source_folder, ingestion_template_file_name='ingestion_template.json',
            url='http://localhost:8081'):
     '''
     Ingest data from the folder
     :param datasource:
     :param source_folder:
-    :param append_to_existing:
+    :param overwrite:
     :param ingestion_template_file_name:
     :param url:
     :return:
@@ -61,9 +61,9 @@ def ingest(datasource, append_to_existing, source_folder, ingestion_template_fil
     logger.info(f'used {template} template to post the task')
     with open(template) as f:
         template = f.read()
-    append_to_existing = 'true' if append_to_existing else "false"
+    overwrite = 'true' if overwrite else "false"
     task_string = template.format(datasource_name=datasource, source_folder=source_folder,
-                                  append_to_existing=append_to_existing)
+                                  append_to_existing=overwrite)
     logger.info(task_string)
     with tempfile.NamedTemporaryFile(mode='w') as tmp:
         tmp.write(task_string)
