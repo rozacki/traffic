@@ -5,13 +5,10 @@ import argparse
 import dateutil.parser
 
 
-# configs_base_folder = 'configs'
-# base_site_data_folder = 'data/sites'
-# base_road_data_folder = 'data/roads'
+config_folder = 'configs'
+site_data_folder = 'data/sites'
+road_data_folder = 'data/roads'
 
-configs_base_folder = None
-base_site_data_folder = None
-base_road_data_folder = None
 
 def get_logger(name='main'):
     #logging.config.fileConfig(os.path.join(configs_base_folder, 'logging.conf'))
@@ -22,15 +19,24 @@ logger = get_logger()
 
 
 def set_globals(new_configs_base_folder, new_base_site_data_folder):
-    global configs_base_folder, base_site_data_folder
-    configs_base_folder = new_configs_base_folder
-    base_site_data_folder = new_base_site_data_folder
-    logger.info(f'configs_base_folder={configs_base_folder}')
-    logger.info(f'base_site_data_folder={base_site_data_folder}')
+    global config_folder, site_data_folder
+    config_folder = new_configs_base_folder
+    site_data_folder = new_base_site_data_folder
+    logger.info(f'configs_base_folder={config_folder}')
+    logger.info(f'base_site_data_folder={site_data_folder}')
 
 
-def get_configs_base_folder():
-    return configs_base_folder
+def get_config_folder():
+    return config_folder
+
+
+def get_site_data_folder():
+    return site_data_folder
+
+
+def get_roads_data_folder():
+    return road_data_folder
+
 
 def valid_date(s):
     try:

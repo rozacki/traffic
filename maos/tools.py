@@ -1,7 +1,7 @@
 import os
 from maos.common import logger
 from maos.sites import load_sites_info
-from maos.common import configs_base_folder
+from maos.common import get_config_folder
 import pandas as pd
 
 
@@ -19,12 +19,12 @@ def join_sites_and_conversions(sites_file='sites.json', conversion_file='Convers
     sites['Id'] = sites['Id'].astype(int)
     sites.set_index('Id')
 
-    conversion_table = pd.read_csv(os.path.join(configs_base_folder, conversion_file))
+    conversion_table = pd.read_csv(os.path.join(get_config_folder(), conversion_file))
     conversion_table.drop_duplicates(subset='MeasurementSiteID', keep=False, inplace=True)
     conversion_table['MeasurementSiteID'] = conversion_table['MeasurementSiteID'].astype(int)
     conversion_table.set_index('MeasurementSiteID')
     joined = pd.merge(sites, conversion_table, how='left', left_on='Id', right_on='MeasurementSiteID')
-    joined.to_csv(os.path.join(configs_base_folder, enriched_file), index=False)
+    joined.to_csv(os.path.join(config_folder, enriched_file), index=False)
     return joined
 
 
@@ -101,9 +101,9 @@ def add_road_name_column(sites_csv, output_file_name='sites_catalog.csv'):
     :param output_file_name:
     :return:
     '''
-    sites = pd.read_csv(os.path.join(configs_base_folder, sites_csv))
+    sites = pd.read_csv(os.path.join(config_folder, sites_csv))
     sites = sites.apply(_enrich, axis=1)
-    sites.to_csv(os.path.join(configs_base_folder, output_file_name), index=False)
+    sites.to_csv(os.path.join(config_folder, output_file_name), index=False)
     return sites
 
 

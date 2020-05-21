@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 import os
 from maos.common import logger
 
-from maos.common import valid_date, base_site_data_folder, base_road_data_folder, fromisoformat
+from maos.common import valid_date, get_site_data_folder, get_road_data_folder, fromisoformat
 from maos.sites import get_road_sites, get_sites
 
 
@@ -57,10 +57,10 @@ def store_site_daily_report(site_daily_report, site_dict, date, partition_by_roa
     if not site_daily_report:
         return
     if partition_by_road:
-        folder = os.path.join(base_road_data_folder, road_name, str(site_dict["Id"]), str(date.year), str(date.month))
+        folder = os.path.join(get_road_data_folder(), road_name, str(site_dict["Id"]), str(date.year), str(date.month))
         file_name = f'{site_dict["Id"]}_{date.year}_{date.month}_{date.day}.json'
     else:
-        folder = os.path.join(base_site_data_folder, str(site_dict["Id"]), str(date.year), str(date.month))
+        folder = os.path.join(get_site_data_folder(), str(site_dict["Id"]), str(date.year), str(date.month))
         file_name = f'{site_dict["Id"]}_{date.year}_{date.month}_{date.day}.json'
     os.makedirs(folder, exist_ok=True)
     with open(os.path.join(folder, file_name), mode='w') as f:
