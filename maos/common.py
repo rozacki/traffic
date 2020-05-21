@@ -6,8 +6,8 @@ import dateutil.parser
 
 
 config_folder = 'configs'
-site_data_folder = 'data/sites'
-road_data_folder = 'data/roads'
+sites_data_folder = 'data/sites'
+roads_data_folder = 'data/roads'
 
 
 def get_logger(name='main'):
@@ -19,23 +19,23 @@ logger = get_logger()
 
 
 def set_globals(new_configs_base_folder, new_base_site_data_folder):
-    global config_folder, site_data_folder
+    global config_folder, sites_data_folder
     config_folder = new_configs_base_folder
-    site_data_folder = new_base_site_data_folder
+    sites_data_folder = new_base_site_data_folder
     logger.info(f'configs_base_folder={config_folder}')
-    logger.info(f'base_site_data_folder={site_data_folder}')
+    logger.info(f'base_site_data_folder={sites_data_folder}')
 
 
 def get_config_folder():
     return config_folder
 
 
-def get_site_data_folder():
-    return site_data_folder
+def get_sites_data_folder():
+    return sites_data_folder
 
 
 def get_roads_data_folder():
-    return road_data_folder
+    return roads_data_folder
 
 
 def valid_date(s):
