@@ -53,8 +53,7 @@ set_globals(sites_catalog_folder, sites_data_folder)
 download = PythonOperator(python_callable=download_road_reports,
                           dag=dag,
                           task_id=remove_non_alnum(f'download_road_{road}_({startdate}-{enddate})'),
-                          op_kwargs={'sites_catalog_folder': sites_catalog_folder,
-                          'base_site_data_folder': sites_data_folder, 'road': road, 'startdate': startdate,
+                          op_kwargs={'road': road, 'startdate': startdate,
                                      'enddate': enddate})
 
 ingest = PythonOperator(python_callable=ingest,
