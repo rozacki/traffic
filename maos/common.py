@@ -44,6 +44,7 @@ def get_roads_data_folder():
 def get_scripts_folder():
     return scripts_folder
 
+
 def valid_date(s):
     try:
         return datetime.strptime(s, "%Y-%m-%d")
