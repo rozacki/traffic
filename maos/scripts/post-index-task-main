@@ -25,7 +25,6 @@ import sys
 import time
 import urllib2
 import urlparse
-import logging
 
 from maos.common import logger
 
