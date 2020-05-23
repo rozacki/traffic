@@ -27,7 +27,7 @@ import urllib2
 import urlparse
 import logging
 
-logger = logging.getLogger()
+from maos.common import logger
 
 def read_task_file(args):
   with open(args.file, 'r') as f:
