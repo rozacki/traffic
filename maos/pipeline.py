@@ -4,7 +4,7 @@ import threading
 import shutil
 import tempfile
 
-from maos.common import logger, get_config_folder, get_scripts_folder
+from maos.common import logger, get_config_folder, get_scripts_folder, get_sites_data_folder
 from maos.sites import get_sites, get_link_sites, get_road_sites
 from maos.download_sites_data import download_and_store_reports
 
@@ -93,7 +93,7 @@ def _wrap_download_and_store_reports(site, startdate, enddate):
     logger.info(f'finished thread {current_thread.getName()}')
 
 
-def _download_reports_async(sites, startdate, enddate, download_folder='data/sites', maximum_folder_size=584000):
+def _download_reports_async(sites, startdate, enddate, maximum_folder_size=584000):
     '''
     downloads data into folder, checks if it does not overcome maximum limit
     :param sites:
@@ -108,24 +108,23 @@ def _download_reports_async(sites, startdate, enddate, download_folder='data/sit
     if (enddate - startdate).days * len(sites) > maximum_folder_size:
         raise Exception('maximum size folder')
     try:
-        shutil.rmtree(download_folder)
+        shutil.rmtree(get_sites_data_folder())
     except Exception as ex:
         logger.error(ex)
         pass
-    logger.info(f'folder {download_folder} content removed')
+    logger.info(f'folder {get_sites_data_folder()} content removed')
 
     threads = []
-    for id, site in sites.items():
+    for _id, site in sites.items():
         t = threading.Thread(target=_wrap_download_and_store_reports,
-                             args=({id: site}, startdate, enddate, ), daemon=True)
-        t.setName(_get_thread_name(id, startdate, enddate))
+                             args=({_id: site}, startdate, enddate, ), daemon=True)
+        t.setName(_get_thread_name(_id, startdate, enddate))
         t.start()
         threads.append(t)
 
     for key, thread in enumerate(threads):
         logger.info(f'wait for {thread.getName()} thread to finish')
         thread.join()
-    return download_folder
 
 
 def download_road_reports(road, startdate, enddate):
