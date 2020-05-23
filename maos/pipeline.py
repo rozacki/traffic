@@ -60,6 +60,7 @@ def ingest(datasource, append_to_existing, source_folder, ingestion_template_fil
     logger.info(f'used {template} template to post the task')
     with open(template) as f:
         template = f.read()
+    append_to_existing = 'true' if append_to_existing else 'false'
     task_string = template.format(datasource_name=datasource, source_folder=source_folder,
                                   append_to_existing=append_to_existing)
     logger.info(task_string)
