@@ -48,21 +48,21 @@ scripts_folder = variable.get_variable('scripts folder')
 set_globals(sites_catalog_folder, sites_data_folder, scripts_folder)
 
 args = {'owner': 'chris'}
-dag = DAG(dag_id=f'download_and_ingest__{road}_({startdate.strftime("%Y-%m-%d")}'
-                 f'-{enddate.strftime("%Y-%m-%d")}', description='download and ingest highways england daily report',
+dag = DAG(dag_id=f'download_and_ingest__{road}_({startdate.strftime("%Y_%m_%d")}'
+                 f'-{enddate.strftime("%Y_%m_%d")}', description='download and ingest highways england daily report',
           start_date=days_ago(1), default_args=args, schedule_interval=None)
 
 download = PythonOperator(python_callable=download_road_reports,
                           dag=dag,
                           task_id=remove_non_alnum(f'download_road_{road}_'
-                                                   f'({startdate.strftime("%Y-%m-%d")}-{enddate.strftime("%Y-%m-%d")})'),
+                                                   f'({startdate.strftime("%Y_%m_%d")}-{enddate.strftime("%Y_%m_%d")})'),
                           op_kwargs={'road': road, 'startdate': startdate,
                                      'enddate': enddate})
 
 ingest = PythonOperator(python_callable=ingest,
                         dag=dag,
-                        task_id=remove_non_alnum(f'ingest_road_{road}_({startdate.strftime("%Y-%m-%d")}'
-                                                 f'-{enddate.strftime("%Y-%m-%d")}) to {datasource}'),
+                        task_id=remove_non_alnum(f'ingest_road_{road}_({startdate.strftime("%Y_%m_%d")}'
+                                                 f'-{enddate.strftime("%Y_%m_%d")}) to {datasource}'),
                         op_kwargs={'datasource': datasource, 'source_folder': sites_data_folder,
                                    'append_to_existing': append})
 
