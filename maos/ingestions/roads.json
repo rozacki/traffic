@@ -1,0 +1,175 @@
+{
+  "type": "index_parallel",
+  "spec": {
+    "ioConfig": {
+      "type": "index_parallel",
+      "inputSource": {
+        "type": "local",
+        "filter": "*.json",
+        "baseDir": "/home/chris/airflow/dags/prod/traffic/maos/data/sites"
+      },
+      "inputFormat": {
+        "type": "json"
+      },
+    "appendToExisting": true
+    },
+    "tuningConfig": {
+      "type": "index_parallel",
+      "partitionsSpec": {
+        "type": "dynamic"
+      }
+    },
+    "dataSchema": {
+      "dataSource": "roads",
+      "granularitySpec": {
+        "type": "uniform",
+        "queryGranularity": "MINUTE",
+        "rollup": false,
+        "segmentGranularity": "DAY"
+      },
+      "timestampSpec": {
+        "column": "Report Date Time",
+        "format": "iso"
+      },
+      "dimensionsSpec": {
+        "dimensions": [
+          {
+            "name": "0 - 10 mph",
+            "type": "long"
+          },
+          {
+            "type": "long",
+            "name": "0 - 520 cm"
+          },
+          {
+            "name": "11 - 15 mph",
+            "type": "long"
+          },
+          {
+            "name": "16 - 20 mph",
+            "type": "long"
+          },
+          {
+            "name": "21 - 25 mph",
+            "type": "long"
+          },
+          {
+            "name": "26 - 30 mph",
+            "type": "long"
+          },
+          {
+            "name": "31 - 35 mph",
+            "type": "long"
+          },
+          {
+            "name": "36 - 40 mph",
+            "type": "long"
+          },
+          {
+            "name": "41 - 45 mph",
+            "type": "long"
+          },
+          {
+            "name": "46 - 50 mph",
+            "type": "long"
+          },
+          {
+            "name": "51 - 55 mph",
+            "type": "long"
+          },
+          {
+            "name": "56 - 60 mph",
+            "type": "long"
+          },
+          {
+            "name": "61 - 70 mph",
+            "type": "long"
+          },
+          {
+            "name": "71 - 80 mph",
+            "type": "long"
+          },
+          {
+            "name": "80+ mph",
+            "type": "long"
+          },
+          {
+            "type": "long",
+            "name": "521 - 660 cm"
+          },
+          {
+            "type": "long",
+            "name": "661 - 1160 cm"
+          },
+          {
+            "type": "long",
+            "name": "1160+ cm"
+          },
+          {
+            "type": "long",
+            "name": "Avg mph"
+          },
+          "Description",
+          {
+            "type": "long",
+            "name": "Id"
+          },
+          {
+            "type": "float",
+            "name": "Latitude"
+          },
+          {
+            "type": "long",
+            "name": "LegacyMeasurementSiteID"
+          },
+          {
+            "type": "float",
+            "name": "Longitude"
+          },
+          {
+            "type": "long",
+            "name": "MeasurementSiteID"
+          },
+          "MeasurementSiteName",
+          "Name",
+          "Report Date",
+          "road",
+          "Site Name",
+          "Status",
+          {
+            "type": "long",
+            "name": "Time Interval"
+          },
+          {
+            "name": "Time Period Ending",
+            "type": "string"
+          },
+          {
+            "type": "long",
+            "name": "Total Volume"
+          },
+          {
+          	"type" : "long",
+            "name" : "gps_x"
+          },
+          {
+          	"type" : "long",
+            "name" : "gps_y"
+          },
+          {
+          "type" : "long",
+          "name" : "link"
+          },
+          {
+          	"type" : "string",
+          	"name" : "direction"
+          },
+          {
+          	"type" : "string",
+          	"name" : "site_type"
+          }
+        ]
+      }
+    }
+  }
+}
