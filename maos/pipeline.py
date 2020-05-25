@@ -82,15 +82,15 @@ def _wrap_download_and_store_reports(site, startdate, enddate):
     :return:
     '''
     current_thread = threading.current_thread()
-    logger.info(f'starting thread {current_thread.getName()}')
+    logger.debug(f'starting thread {current_thread.getName()}')
     max_threads_semaphore.acquire()
-    logger.info(f'started thread {current_thread.getName()}')
+    logger.debug(f'started thread {current_thread.getName()}')
     try:
         download_and_store_reports(site, startdate, enddate)
     except Exception as ex:
         logger.error(str(ex))
     max_threads_semaphore.release()
-    logger.info(f'finished thread {current_thread.getName()}')
+    logger.debug(f'finished thread {current_thread.getName()}')
 
 
 def _download_reports_async(sites, startdate, enddate, maximum_folder_size=584000):
