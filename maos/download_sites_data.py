@@ -76,12 +76,12 @@ def download_site_lazily(site_dict, startdate, enddate):
 
 
 def download_and_store_reports(sites, startdate, enddate):
-    logger.info(f'start loading {len(sites)} sites from {startdate} till {enddate}')
+    logger.debug(f'start loading {len(sites)} sites from {startdate} till {enddate}')
     for key, site_dict in sites.items():
         reports = download_site_lazily(site_dict, startdate, enddate)
         for report_date, site_daily_report in reports:
             store_site_daily_report(site_daily_report, site_dict, report_date)
-    logger.info(f'finished loading and storing {len(sites)}')
+    logger.debug(f'finished loading and storing {len(sites)}')
 
 
 def download_sites_daily_reports(sites_file, startdate, enddate, site_start, sites_count):
