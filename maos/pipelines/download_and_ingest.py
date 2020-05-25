@@ -48,8 +48,8 @@ scripts_folder = variable.get_variable('scripts folder')
 set_globals(sites_catalog_folder, sites_data_folder, scripts_folder)
 
 args = {'owner': 'chris'}
-dag = DAG(dag_id=f'download_and_ingest__{road}_({startdate.strftime("%Y_%m_%d")}'
-                 f'-{enddate.strftime("%Y_%m_%d")}', description='download and ingest highways england daily report',
+dag = DAG(dag_id=f'download_and_ingest__{road}_{startdate.strftime("%Y_%m_%d")}'
+                 f'{enddate.strftime("%Y_%m_%d")}', description='download and ingest highways england daily report',
           start_date=days_ago(1), default_args=args, schedule_interval=None)
 
 download = PythonOperator(python_callable=download_road_reports,
