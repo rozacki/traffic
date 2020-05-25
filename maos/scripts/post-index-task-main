@@ -23,8 +23,8 @@ import json
 import re
 import sys
 import time
-import urllib2
-import urlparse
+import urllib.parse as urlparse
+import urllib.request as urllib2
 
 from maos.common import logger
 
