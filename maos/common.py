@@ -66,4 +66,4 @@ def remove_non_alnum(s):
 
 
 def to_bool(s):
-    return True if s.lower() in ('yes', '1') else False
+    return True if s.lower() in ('yes', '1', 'true') else False

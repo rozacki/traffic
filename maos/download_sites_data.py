@@ -28,11 +28,11 @@ def download_site_daily_report(site_id, startdate):
                           stop_year=enddate.year, stop_month=enddate.month, stop_day=enddate.day)
     res = requests.get(url)
     logger.debug(f'{url}')
-    logger.info(f'downloading daily report for site {site_id} date {startdate}'
+    logger.debug(f'downloading daily report for site {site_id} date {startdate}'
                 f'{res.status_code}')
     if res.status_code == 200:
         return res.json()
-    logger.info(f'missing daily report for site {site_id} date {startdate}')
+    logger.debug(f'missing daily report for site {site_id} date {startdate}')
     return  None
 
 
@@ -69,7 +69,7 @@ def store_site_daily_report(site_daily_report, site_dict, date):
 
 def download_site_lazily(site_dict, startdate, enddate):
     delta_day = timedelta(days=1)
-    logger.info(f'start loading {site_dict["Id"]} from {startdate} till {enddate}')
+    logger.debug(f'start loading {site_dict["Id"]} from {startdate} till {enddate}')
     while startdate < enddate:
         yield startdate, download_site_daily_report(site_dict['Id'], startdate)
         startdate = startdate + delta_day
@@ -107,9 +107,9 @@ def download_road_daily_reports(sites_file, road_name, startdate, enddate):
     :return:
     '''
     sites = get_road_sites(sites_file, road_name)
-    logger.info(f'start loading {len(sites)} sites for road {road_name}')
+    logger.debug(f'start loading {len(sites)} sites for road {road_name}')
     download_and_store_reports(sites, startdate, enddate)
-    logger.info(f'finished loading ans storing {len(sites)} sites for road {road_name}')
+    logger.debug(f'finished loading ans storing {len(sites)} sites for road {road_name}')
 
 
 if __name__ == '__main__':
